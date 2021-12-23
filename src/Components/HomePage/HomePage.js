@@ -21,6 +21,13 @@ const HomePage = () => {
             </ul> */}
     Hello
 
+    <a href="/login">
+        Login
+    </a>
+    <a href="/signup">
+        Sign Up
+    </a>
+
         </div>
     )
 }

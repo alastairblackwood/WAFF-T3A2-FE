@@ -94,6 +94,7 @@ const films = [ {
 
 
 export async function getFilm(id) {
+    // then replace films with filmAPI
     const film = films.find(film => film.id == id)
     return film
 }
