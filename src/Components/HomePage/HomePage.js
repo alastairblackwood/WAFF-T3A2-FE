@@ -1,18 +1,19 @@
-import React, { useState, useEffect} from 'react'
-import axios from "axios"
+// import React from 'react'
+import React, { useEffect} from 'react'
+// import axios from "axios"
 
-const baseURL = "localhost:5000/api/v1/films"
+// const baseURL = "localhost:5000/api/v1/films"
 
 const HomePage = () => {
 
-    // const [data, setData] = useState([]);
+    // useEffect(() => {
 
-    // const useEffect = ( () => {
-    //     axios.get(baseURL).then((response) => {
-    //         setData(response.data);
-    //       });
-    //     }, []);
-      
+    //     const userInfo = localStorage.getItem("userInfo");
+
+    //     if (userInfo){
+    //         history("/")
+    //     }
+    // }, [history, userInfo])
  
     return (
         <div>

@@ -1,34 +1,32 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import {useNavigate} from "react-router-dom"
 import Loading from '../Loading';
 import FormInput from './FormInput';
-import { Form } from './LogInPageElements';
+import { Form, LoginContainer } from './LogInPageElements';
+import { useGlobalState } from '../../utils/stateContext';
+import ErrorMessage from '../ErrorMessage';
 
 const baseURL = "http://localhost:5000/api/v1/users/login"
 
-const LogInPage = () => {
+const LogInPage = ({userInfo}) => {
 
+    // include global state context
+    const { userHasAuthenticated } = useGlobalState();
 
+    // set initial states for error and loading
     const [error, setError] = useState(false);
+    
     const [loading, setLoading] = useState(false)
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    // set initial states for email and password
     const [values, setValues] = useState({
         email: "",
         password: "",
     })
-
+    // form inputs and values
     const inputs = [
-        // {
-        //     id: "1",
-        //     name: "username",
-        //     type: "text",
-        //     placeholder: "Username",
-        //     errorMessage: "",
-        //     label: "Username"
-        // },
         {
-            id: "2",
+            id: "1",
             
             name: "email",
             type: "email",
@@ -37,26 +35,20 @@ const LogInPage = () => {
             label: "Email"
         },
         {
-            id: "3",
+            id: "2",
             name: "password",
             type: "password",
             placeholder: "Password",
             errorMessage: "",
             label: "Password"
         },
-        // {
-        //     id: "4",
-        //     name: "confirmPassword",
-        //     type: "password",
-        //     placeholder: "Confirm Password",
-        //     errorMessage: "",
-        //     label: "Confirm Password"
-        // },
     ]
+    const history = useNavigate();
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // const data = new FormData(e.target)
         
         try {
             const config = {
@@ -65,38 +57,50 @@ const LogInPage = () => {
                 }
             }
             
+            // begin Loading sequence/spinner
             setLoading(true)
 
             // post the request on pressing submit, posting the input values
             const { data } = await axios.post(
                 baseURL,
                 {
-                  email,
-                  password,
+                // post using input values spread operator
+                ...values,
                 },
                 config
                 );
         
+            // alert("logged in")
+            userHasAuthenticated(true);
+
+        // log userInfo in localStorage in browser
         console.log(data)
         localStorage.setItem("userInfo", JSON.stringify(data))
+
+        // turn off Loading sequence/spinner
         setLoading(false);
         } catch (error) {
             setError(error.response.data.message)
-            // setLoading(false);
+            setLoading(false);
         }
 
     };
 
+    // updates input forms with each key
     const onChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value})
     }
 
+
 console.log(values)
 
     return (
-        <div>
+
+        <LoginContainer >
             <h2>Login</h2>
+            
             {loading && <Loading/>}
+            {error && <ErrorMessage>{error}</ErrorMessage>}
             {/* {errorMessage && <p>{errorMessage}</p>}
             {successMessage && <p>{successMessage}</p>} */}
             <Form onSubmit={handleSubmit}>
@@ -110,7 +114,8 @@ console.log(values)
                 ))}
                 <button className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Submit</button>
             </Form>
-        </div>
+        </LoginContainer>
+
     )
 }
 

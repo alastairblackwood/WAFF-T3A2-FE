@@ -93,11 +93,11 @@ const films = [ {
 }]
 
 
-export async function getFilm(id) {
-    // then replace films with filmAPI
-    const film = films.find(film => film.id == id)
-    return film
-}
+// export async function getFilm(id) {
+//     // then replace films with filmAPI
+//     const film = films.find(film => film.id == id)
+//     return film
+// }
 
 export async function createFilm(film) {
 	return film
