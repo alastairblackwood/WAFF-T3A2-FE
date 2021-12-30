@@ -1,14 +1,12 @@
-import './App.css';
-import NarBar from './Components/adminDashboard/Navbar/NarBar';
-import SideProfile from './Components/adminDashboard/sideProfile/SideProfile';
-import FilmList from './Components/adminDashboard/FilmList/FilmList';
+import "./App.css";
+import NarBar from "./Components/adminDashboard/Navbar/NarBar";
+import ListFilmList from "./Components/adminDashboard/ListFilm/ListFilmList";
 
 function App() {
   return (
     <>
-     <NarBar />
-     <SideProfile />
-     <FilmList />
+      <NarBar />
+      <ListFilmList />
     </>
   );
 }
