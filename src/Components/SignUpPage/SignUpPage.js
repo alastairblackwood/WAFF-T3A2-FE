@@ -58,14 +58,11 @@ const SignUpPage = () => {
         },
     ]
 
-    const onChange = (e) => {
-        setValues({...values, [e.target.name]: e.target.value})
-    }
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-
+        
+        
         if(values.password !== values.passwordConfirm){
             setMessage("Passwords do not match.")
         } else {
@@ -78,33 +75,37 @@ const SignUpPage = () => {
                         "Content-type": "application/json",
                     },
                 };
-
+                
                 setLoading(true);
-
+                
                 // post the request on pressing submit, posting the input values
                 const { data } = await axios.post(
-                baseURL,
-                {
+                    baseURL,
+                    {
                 // post using input values spread operator
                 ...values,
-                },
-                config
+            },
+            config
                 );
-
+                
                 setLoading(false);
                 localStorage.setItem("userInfo", JSON.stringify(data));
 
-
+                
             } catch (error){
               setError(error.response.data.message);
               setLoading(false);
             }
         }
-
+        
 
         console.log(values.email)
     }
-
+ 
+    const onChange = (e) => {
+        setValues({...values, [e.target.name]: e.target.value})
+    }
+    
     return (
         <div className="Signupcontainer">
             <h2>Sign Up</h2>

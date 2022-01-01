@@ -45,8 +45,6 @@ const LogInPage = ({userInfo}) => {
     ]
     const history = useNavigate();
 
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         
