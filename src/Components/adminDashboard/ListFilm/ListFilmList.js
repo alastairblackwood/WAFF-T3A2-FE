@@ -33,9 +33,10 @@ function ListFilmList() {
       <ListFilmForm onSubmit={addListFilm} />
       // map through listFilms here and only pass listFilm to the ListFilm
       component
-      {listFilms.map((listFilm) => {
-        <ListFilm listFilm={listFilm} />;
-      })}
+      {/* {listFilms.map((listFilm, index) => { */}
+      <ListFilm listFilms={listFilms} completeListFilm={completeListFilm} />
+      {/* //     listFilm={listFilm} listFilm={index} 
+    //   })} */}
     </div>
   );
 }
