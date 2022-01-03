@@ -13,33 +13,33 @@ import Navbar from './Components/Navbar/Navbar';
 
 
 
-  export const Logout = () => {
-    const [isAuthenticated, userHasAuthenticated] = useState(false);
+  // export const Logout = () => {
+  //   const [isAuthenticated, userHasAuthenticated] = useState(false);
 
-  const handleLogout = () => {
-  localStorage.removeItem("userInfo")
-  userHasAuthenticated(false)
-  }
+  // const handleLogout = () => {
+  // localStorage.removeItem("userInfo")
+  // userHasAuthenticated(false)
+  // }
 
-    return (
-      <>
-      <StateContext.Provider value={{ isAuthenticated, userHasAuthenticated}}>
+  //   return (
+  //     <>
+  //     <StateContext.Provider value={{ isAuthenticated, userHasAuthenticated}}>
 
-      <div>
+  //     <div>
         
-        {isAuthenticated ? 
-            (
-                <button onClick={handleLogout}>Logout</button>
-            )
-            : (
-            <button>Login</button>
-            )}
-      </div>
-      </StateContext.Provider>
-      </>
-    )
+  //       {isAuthenticated ? 
+  //           (
+  //               <button onClick={handleLogout}>Logout</button>
+  //           )
+  //           : (
+  //           <button>Login</button>
+  //           )}
+  //     </div>
+  //     </StateContext.Provider>
+  //     </>
+  //   )
   
-  }
+  // }
 
 
 const App = () => {
@@ -47,10 +47,10 @@ const App = () => {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
 
   // will need to add this to navbar
-  // const handleLogout = () => {
-  //   localStorage.removeItem("userInfo")
-  //   userHasAuthenticated(false)
-  // }
+  const handleLogout = () => {
+    localStorage.removeItem("userInfo")
+    userHasAuthenticated(false)
+  }
 
 
   return (
@@ -69,14 +69,14 @@ const App = () => {
           <Route path='/signup' element={<SignUpPage/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> */}
         </Routes>
       </Router>
-      <Logout/>
-      {/* {isAuthenticated ? 
+      {/* <Logout/> */}
+      {isAuthenticated ? 
             (
                 <button onClick={handleLogout}>Logout</button>
             )
             : (
             <button>Login</button>
-            )} */}
+            )}
     </StateContext.Provider>
     </>
   );
