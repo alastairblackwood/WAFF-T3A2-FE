@@ -10,7 +10,7 @@ import HomePage from './Components/HomePage/HomePage';
 import LogIn from './Components/LogInPage/LoginPage';
 import SignUpPage from './Components/SignUpPage/SignUpPage';
 import Navbar from './Components/Navbar/Navbar';
-import Layout from './Components/Layout';
+import Layout from './Components/Layout/Layout';
 
 const App = () => {
   

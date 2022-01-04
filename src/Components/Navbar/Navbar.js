@@ -1,15 +1,14 @@
 import React from 'react'
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
-import HomePage from '../HomePage/HomePage';
-import LogIn from '../LogInPage/LoginPage';
-import SignUpPage from '../SignUpPage/SignUpPage';
+
 import {NavbarContainer} from './NavbarElements'
 
 const Navbar = () => {
     return (
         // <!-- Always shows a header, even in smaller screens. -->
-        <NavbarContainer className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-          <header className="mdl-layout__header mdl-layout__header--scroll">
+        <div>
+        <div className="mdl-layout mdl-js-layout">
+          <header className="mdl-layout__header">
             <div className="mdl-layout__header-row">
             {/* <!-- Title --> */}
             <span className="mdl-layout-title">WAFF</span>
@@ -19,13 +18,19 @@ const Navbar = () => {
             <nav className="mdl-navigation">
               <Link to="/" className="mdl-navigation__link">Home</Link>
               <Link to="/login" className="mdl-navigation__link"> Login</Link>
-              
-              <a className="mdl-navigation__link" href="">Link</a>
-              <a className="mdl-navigation__link" href="">Link</a>
             </nav>
             </div>
           </header>
-        </NavbarContainer>
+              <div class="mdl-layout__drawer">
+              <span class="mdl-layout__title">Simple Layout</span>
+              <nav class="mdl-navigation">
+              <a class="mdl-navigation__link" href="#">Nav link 1</a>
+              <a class="mdl-navigation__link" href="#">Nav link 2</a>
+              <a class="mdl-navigation__link" href="#">Nav link 3</a>
+              </nav>
+              </div>
+        </div>
+        </div>
         
     )
 }

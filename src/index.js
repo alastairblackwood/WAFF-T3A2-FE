@@ -3,23 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
-import LogIn from "./Components/LogInPage/LoginPage"
+import {BrowserRouter} from "react-router-dom";
 
 ReactDOM.render(
   
   <React.StrictMode>
     <BrowserRouter>
       <App /> 
-      {/* <Routes> */}
-      {/* <Route path="/" element={<App />} /> */}
-      {/* <Route path='/login' element={<LogIn/>} exact  /> */}
-      {/* <Route path="invoices" element={<Invoices />} /> */}
-    {/* </Routes> */}
     </BrowserRouter>
   </React.StrictMode>,
     document.getElementById('root')
