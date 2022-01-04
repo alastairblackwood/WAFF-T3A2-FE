@@ -1,7 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
 }
-
 
 .App-header {
   background-color: #282c34;
@@ -23,3 +23,4 @@
   vertical-align: baseline;
   background: transparent;
 }
+

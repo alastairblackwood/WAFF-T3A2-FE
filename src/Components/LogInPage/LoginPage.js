@@ -70,15 +70,19 @@ const LogInPage = ({userInfo}) => {
         
             // alert("logged in")
             userHasAuthenticated(true);
+            
+            // log userInfo in localStorage in browser
+            console.log(data)
+            localStorage.setItem("userInfo", JSON.stringify(data))
+            
+            // //push to main index on login
+            history("/");
 
-        // log userInfo in localStorage in browser
-        console.log(data)
-        localStorage.setItem("userInfo", JSON.stringify(data))
 
         // turn off Loading sequence/spinner
         setLoading(false);
         } catch (error) {
-            setError(error.response.data.message)
+            setError(error.response)
             setLoading(false);
         }
 
@@ -93,7 +97,7 @@ const LogInPage = ({userInfo}) => {
 console.log(values)
 
     return (
-
+    
         <LoginContainer >
             <h2>Login</h2>
             

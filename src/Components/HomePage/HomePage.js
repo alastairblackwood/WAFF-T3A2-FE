@@ -11,10 +11,6 @@ const HomePage = () => {
  
     return (
         <div>
-            {/* <ul>
-                {data.films}
-            </ul> */}
-    Hello
 
     <a href="/login">
         Login

@@ -1,6 +1,6 @@
 import './App.css';
 import React,{useState} from 'react'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { Outlet, useNavigate, BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 // import stateReducer from './utils/stateReducer'
 import {StateContext} from './utils/stateContext'
 import HomePage from './Components/HomePage/HomePage';
@@ -10,37 +10,7 @@ import HomePage from './Components/HomePage/HomePage';
 import LogIn from './Components/LogInPage/LoginPage';
 import SignUpPage from './Components/SignUpPage/SignUpPage';
 import Navbar from './Components/Navbar/Navbar';
-
-
-
-  // export const Logout = () => {
-  //   const [isAuthenticated, userHasAuthenticated] = useState(false);
-
-  // const handleLogout = () => {
-  // localStorage.removeItem("userInfo")
-  // userHasAuthenticated(false)
-  // }
-
-  //   return (
-  //     <>
-  //     <StateContext.Provider value={{ isAuthenticated, userHasAuthenticated}}>
-
-  //     <div>
-        
-  //       {isAuthenticated ? 
-  //           (
-  //               <button onClick={handleLogout}>Logout</button>
-  //           )
-  //           : (
-  //           <button>Login</button>
-  //           )}
-  //     </div>
-  //     </StateContext.Provider>
-  //     </>
-  //   )
-  
-  // }
-
+import Layout from './Components/Layout';
 
 const App = () => {
   
@@ -48,28 +18,26 @@ const App = () => {
 
   // will need to add this to navbar
   const handleLogout = () => {
-    localStorage.removeItem("userInfo")
-    userHasAuthenticated(false)
+    localStorage.removeItem("userInfo");
+    userHasAuthenticated(false);
   }
 
 
   return (
     <>
     <StateContext.Provider value={{ isAuthenticated, userHasAuthenticated}}>
-      <Router>
-    {/* <Navbar/> */}
         <Routes>
-          <Route path='/' element={<HomePage/>} exact />   
-          {/* uncomment film to get film posts */}
-          {/* <Route path='/' element={<Film/>} exact /> */}
-          
-          <Route path='/login' element={<LogIn/>} exact  />
-          <Route path='/signup' element={<SignUpPage/>} exact />
-          {/* <Route path='/login' element={<LogIn/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
-          <Route path='/signup' element={<SignUpPage/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> */}
+          <Route path='/' element={<Layout/>}>
+            <Route index element={<HomePage/>} exact />   
+            {/* uncomment film to get film posts */}
+            {/* <Route path='/' element={<Film/>} exact /> */}
+            
+            <Route path='/login' element={<LogIn/>} exact  />
+            {/* <Route path='/signup' element={<SignUpPage/>} exact /> */}
+            {/* <Route path='/login' element={<LogIn/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+            <Route path='/signup' element={<SignUpPage/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> */}
+        </Route>
         </Routes>
-      </Router>
-      {/* <Logout/> */}
       {isAuthenticated ? 
             (
                 <button onClick={handleLogout}>Logout</button>
@@ -77,6 +45,7 @@ const App = () => {
             : (
             <button>Login</button>
             )}
+      {/* <Logout/> */}
     </StateContext.Provider>
     </>
   );
