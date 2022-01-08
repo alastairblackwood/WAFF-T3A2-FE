@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 import ErrorMessage from '../ErrorMessage'
 import Loading from '../Loading'
 import FormInput from '../LogInPage/FormInput'
@@ -123,6 +123,7 @@ const SignUpPage = () => {
                 ))}
                 <button className="button">Submit</button>
             </Form>
+            <p>Already have an account? <Link to="/login">Log In</Link></p>
         </div>
     )
 }
