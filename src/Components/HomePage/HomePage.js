@@ -1,6 +1,7 @@
 // import React from 'react'
 import React, { useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
+import About from '../About/About';
 import Carousel from '../Carousel/Carousel';
 // import axios from "axios"
 
@@ -13,6 +14,7 @@ const HomePage = () => {
     return (
         <div>
     <Carousel/>
+    <About/>
     <a href="/login">
         Login
     </a>

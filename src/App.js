@@ -8,6 +8,7 @@ import HomePage from './Components/HomePage/HomePage';
 // import {getFilms} from './Services/filmServices'
 // import Films from './Components/Films'
 // import Film from './Components/Film'
+import About from './Components/About/About';
 import LogIn from './Components/LogInPage/LoginPage';
 import SignUpPage from './Components/SignUpPage/SignUpPage';
 import Navbar from './Components/Navbar/Navbar';
@@ -33,8 +34,8 @@ const App = () => {
             <Route index element={<HomePage/>} exact />   
             {/* uncomment film to get film posts */}
             {/* <Route path='/' element={<Film/>} exact /> */}
+            <Route path='/about' element={<About/>} exact  />
             <Route path='/login' element={<LogIn/>} exact  />
-            {/* <Route path='/about' element={<About/>} exact  /> */}
             <Route path='/signup' element={<SignUpPage/>} exact />
             {/* <Route path='/login' element={<LogIn/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
             <Route path='/signup' element={<SignUpPage/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> */}

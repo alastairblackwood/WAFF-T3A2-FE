@@ -17,7 +17,7 @@ export const CarouselInner = styled.div`
     width: 500px;
 `
 export const CarouselCell = styled.div`
-background: green;
+background: #517AB9;
 height: 200px;
 
 `
