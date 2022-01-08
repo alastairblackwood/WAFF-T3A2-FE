@@ -40,7 +40,7 @@ const Navbar = ({isOpen, toggle}) => {
                 <Link to={`/users/${id}`} className="nav-link" aria-current="page">About</Link>
                 </li> */}
                 {/* <li className="nav-item"> */}
-                <a className="nav-link" href="#">Schedule</a>
+                <Link to="/schedule" className="nav-link" aria-current="page">Schedule</Link>
                 {/* </li> */}
                 {/* <li className="nav-item"> */}
                 <a className="nav-link disabled">Disabled</a>

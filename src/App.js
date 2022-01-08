@@ -14,6 +14,7 @@ import SignUpPage from './Components/SignUpPage/SignUpPage';
 import Navbar from './Components/Navbar/Navbar';
 import Layout from './Components/Layout/Layout';
 import { theme } from './Components/SharedStyles/styledFonts';
+import Schedule from './Components/Schedule/Schedule';
 
 const App = () => {
   
@@ -35,6 +36,7 @@ const App = () => {
             {/* uncomment film to get film posts */}
             {/* <Route path='/' element={<Film/>} exact /> */}
             <Route path='/about' element={<About/>} exact  />
+            <Route path='/schedule' element={<Schedule/>} exact  />
             <Route path='/login' element={<LogIn/>} exact  />
             <Route path='/signup' element={<SignUpPage/>} exact />
             {/* <Route path='/login' element={<LogIn/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
