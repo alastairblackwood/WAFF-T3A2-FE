@@ -7,8 +7,8 @@ const FormInput = (props) => {
     return (
         <div className="formInput mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             {/* Creates input methods for each input value in inputs array*/}
-            <input className="mdl-textfield__input" {...inputProps} onChange={onChange} />
-            <label className="mdl-textfield__label" >{label}</label>
+            <label className="form-label" >{label}</label>
+            <input className="form-control" {...inputProps} onChange={onChange} />
             <span>{errorMessage}</span>
         </div>
     )

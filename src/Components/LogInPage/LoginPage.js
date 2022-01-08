@@ -74,15 +74,16 @@ const LogInPage = ({userInfo}) => {
             // log userInfo in localStorage in browser
             console.log(data)
             localStorage.setItem("userInfo", JSON.stringify(data))
-            
-            // //push to main index on login
-            history("/");
+             // turn off Loading sequence/spinner
+            setLoading(false);
 
-
-        // turn off Loading sequence/spinner
-        setLoading(false);
+            if (data.role === "admin"){
+                history("/about")
+            } else {
+                history("/")
+            }    
         } catch (error) {
-            setError(error.response)
+            setError(error.response.data.message)
             setLoading(false);
         }
 

@@ -1,36 +1,62 @@
-import React from 'react'
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
+import React, { useContext } from 'react'
+import {BrowserRouter as Router, Routes, Route, Link, Navigate} from 'react-router-dom'
+import { useGlobalState } from '../../utils/stateContext';
+import {NavbarContainer, NavA} from './NavbarElements'
+import {IoClose} from "react-icons/io5"
 
-import {NavbarContainer} from './NavbarElements'
+const Navbar = ({isOpen, toggle}) => {
+  const { userHasAuthenticated } = useGlobalState();
 
-const Navbar = () => {
+ const userid = localStorage.getItem("id")
+ const user = localStorage.getItem("userInfo")
+ console.log(user)
+  // will need to add this to navbar
+  const handleLogout = () => {
+    localStorage.removeItem("userInfo");
+    userHasAuthenticated(false);
+  }
+ 
     return (
-        // <!-- Always shows a header, even in smaller screens. -->
-        <div>
-        <div className="mdl-layout mdl-js-layout">
-          <header className="mdl-layout__header">
-            <div className="mdl-layout__header-row">
-            {/* <!-- Title --> */}
-            <span className="mdl-layout-title">WAFF</span>
-            {/* <!-- Add spacer, to align navigation to the right --> */}
-            <div className="mdl-layout-spacer"></div>
-            {/* <!-- Navigation --> */}
-            <nav className="mdl-navigation">
-              <Link to="/" className="mdl-navigation__link">Home</Link>
-              <Link to="/login" className="mdl-navigation__link"> Login</Link>
-            </nav>
-            </div>
-          </header>
-              <div class="mdl-layout__drawer">
-              <span class="mdl-layout__title">Simple Layout</span>
-              <nav class="mdl-navigation">
-              <a class="mdl-navigation__link" href="#">Nav link 1</a>
-              <a class="mdl-navigation__link" href="#">Nav link 2</a>
-              <a class="mdl-navigation__link" href="#">Nav link 3</a>
-              </nav>
+      <div >
+        <NavbarContainer isOpen={isOpen} className="navbar navbar-expand-lg navbar-light">
+          <div className="container-fluid">
+            <NavA className="navtitle" href="/">WES ANDERSON FILM FESTIVAL</NavA>
+            <button className="navbar-dd" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-d-icon" onClick={toggle}></span>
+            </button>
+            <button>
+            <IoClose onClick={toggle}/>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div className="navbar-nav me-auto mb-2 mb-lg-0">
+                {/* <li className="nav-item"> */}
+                {/* <a className="nav-link active" aria-current="page" href="#">Films</a> */}
+                <Link to="/" className="nav-link" aria-current="page">Films</Link>
+                {/* </li> */}
+                {/* <li className="nav-item"> */}
+                <Link to="/about" className="nav-link" aria-current="page">About</Link>
+                {/* </li> */}
+                {/* <li className="nav-item">
+                <Link to={`/users/${id}`} className="nav-link" aria-current="page">About</Link>
+                </li> */}
+                {/* <li className="nav-item"> */}
+                <a className="nav-link" href="#">Schedule</a>
+                {/* </li> */}
+                {/* <li className="nav-item"> */}
+                <a className="nav-link disabled">Disabled</a>
+                {/* </li> */}
               </div>
-        </div>
-        </div>
+          {(user) ? 
+            (
+                <button onClick={handleLogout}>Logout</button>
+            )
+            : (
+            <button>Login</button>
+            )}
+            </div>
+          </div>     
+        </NavbarContainer>
+      </div>
         
     )
 }

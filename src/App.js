@@ -1,4 +1,5 @@
 import './App.css';
+import {ThemeProvider} from 'styled-components';
 import React,{useState} from 'react'
 import { Outlet, useNavigate, BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 // import stateReducer from './utils/stateReducer'
@@ -11,6 +12,7 @@ import LogIn from './Components/LogInPage/LoginPage';
 import SignUpPage from './Components/SignUpPage/SignUpPage';
 import Navbar from './Components/Navbar/Navbar';
 import Layout from './Components/Layout/Layout';
+import { theme } from './Components/SharedStyles/styledFonts';
 
 const App = () => {
   
@@ -21,18 +23,18 @@ const App = () => {
     localStorage.removeItem("userInfo");
     userHasAuthenticated(false);
   }
-
-
+ 
   return (
     <>
     <StateContext.Provider value={{ isAuthenticated, userHasAuthenticated}}>
+      <ThemeProvider theme={theme}>
         <Routes>
           <Route path='/' element={<Layout/>}>
             <Route index element={<HomePage/>} exact />   
             {/* uncomment film to get film posts */}
             {/* <Route path='/' element={<Film/>} exact /> */}
-            
             <Route path='/login' element={<LogIn/>} exact  />
+            {/* <Route path='/about' element={<About/>} exact  /> */}
             {/* <Route path='/signup' element={<SignUpPage/>} exact /> */}
             {/* <Route path='/login' element={<LogIn/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
             <Route path='/signup' element={<SignUpPage/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> */}
@@ -46,6 +48,7 @@ const App = () => {
             <button>Login</button>
             )}
       {/* <Logout/> */}
+      </ThemeProvider>
     </StateContext.Provider>
     </>
   );
