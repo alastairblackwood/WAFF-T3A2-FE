@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 import Loading from '../Loading';
 import FormInput from './FormInput';
 import { Form, LoginContainer } from './LogInPageElements';
@@ -117,6 +117,7 @@ console.log(values)
                 ))}
                 <button className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Submit</button>
             </Form>
+            <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
         </LoginContainer>
 
     )
