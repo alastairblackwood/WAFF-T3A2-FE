@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScheduleContainer, ScheduleHeader, ScheduleHeader2, ScheduleHeader3, ScheduleTable } from './ScheduleElements'
+import { ScheduleContainer, ScheduleHeader, ScheduleHeader2, ScheduleHeader3, ScheduleSpan, ScheduleTable } from './ScheduleElements'
 
 const Schedule = () => {
 
@@ -34,7 +34,7 @@ const Schedule = () => {
             <ScheduleHeader>Schedule</ScheduleHeader>
             <ScheduleHeader2>Brisbane - 17th Jan 2022 - 30th Jan 2022</ScheduleHeader2>
             <ScheduleHeader3>Motion Picture Cinema</ScheduleHeader3>
-            <ScheduleTable className='Table'>
+            <ScheduleTable className='Table container'>
             {/* {films.map((film) => {
             const {id, images, name} = film;
             console.log(films[0])
@@ -45,16 +45,30 @@ const Schedule = () => {
                 <CarouselButton>Show tickets and times</CarouselButton>
             </CarouselCell>
             })} */}
+            <div className='row row-cols-3'>
+                <ScheduleSpan>Title</ScheduleSpan>
+                <ScheduleSpan>Date</ScheduleSpan>
+                <ScheduleSpan>Summary</ScheduleSpan>
+
+  
             {scheduleList.map((film) => {
                 const {title, date, summary} = film;
 
                 return (
-                    <div>
+                    <>
+                    <div className='col'>
                         <p>{title}</p>
+                    </div>
+                    <div className='col'>
                         <p>{date}</p>
                     </div>
+                    <div className='col'>
+                        <p>{summary}</p>
+                    </div>
+                    </>
                 );
             })}
+            </div>
 
             </ScheduleTable>
 
