@@ -73,7 +73,6 @@ const LogInPage = ({userInfo}) => {
 
             // log userInfo in localStorage in browser
             console.log(data)
-            console.log(success)
             localStorage.setItem("userInfo", JSON.stringify(data))
             // turn off Loading sequence/spinner
             setLoading(false);

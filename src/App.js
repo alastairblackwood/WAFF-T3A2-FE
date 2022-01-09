@@ -1,13 +1,10 @@
 import './App.css';
 import {ThemeProvider} from 'styled-components';
 import React,{useState} from 'react'
-import { Outlet, useNavigate, BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-// import stateReducer from './utils/stateReducer'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import {StateContext} from './utils/stateContext'
 import HomePage from './Components/HomePage/HomePage';
-// import {getFilms} from './Services/filmServices'
-// import Films from './Components/Films'
-// import Film from './Components/Film'
+
 import About from './Components/About/About';
 import LogIn from './Components/LogInPage/LoginPage';
 import SignUpPage from './Components/SignUpPage/SignUpPage';
@@ -43,13 +40,13 @@ const App = () => {
             <Route path='/signup' element={<SignUpPage/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> */}
         </Route>
         </Routes>
-      {isAuthenticated ? 
+      {/* {isAuthenticated ? 
             (
                 <button onClick={handleLogout}>Logout</button>
             )
             : (
             <button>Login</button>
-            )}
+            )} */}
       {/* <Logout/> */}
       </ThemeProvider>
     </StateContext.Provider>

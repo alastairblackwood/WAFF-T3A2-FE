@@ -12,6 +12,9 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 @media only screen and (min-width: 1400px) {
     height: 100vh;
 }
+@media only screen and (min-height: 750px) {
+    height: 80vh;
+}
 `
 
 export const ScheduleHeader = styled.h1`
@@ -32,12 +35,16 @@ export const ScheduleHeader3 = styled.h2`
 
 export const ScheduleTable = styled.div`
     background-color: white;
+    font-family: ${props => props.theme.bitterFont};
     border: none;
     border-radius: 20px;
     padding: 20px;
     display: grid;
     filter: drop-shadow(0px 3px 0px rgba(0, 0, 0, 0.25));
     
+    @media only screen and (max-width: 380px){
+        font-size: 14px;
+    }
     @media only screen and (min-width: 1400px) {
     height: 80%;
     }
@@ -47,6 +54,7 @@ export const ScheduleTable = styled.div`
 export const ScheduleSpan = styled.span`
         font-family: ${props => props.theme.bitterFont};
         font-weight: bold;
+        padding: 2%;
 
     @media only screen and (min-width: 1400px) {
     font-size: 24px;

@@ -45,14 +45,16 @@ const Navbar = ({isOpen, toggle}) => {
                 {/* <li className="nav-item"> */}
                 <a className="nav-link disabled">Disabled</a>
                 {/* </li> */}
-              </div>
-          {(user) ? 
+                {userHasAuthenticated ? 
             (
                 <button onClick={handleLogout}>Logout</button>
             )
             : (
             <button>Login</button>
             )}
+              </div>
+
+     
             </div>
           </div>     
         </NavbarContainer>
