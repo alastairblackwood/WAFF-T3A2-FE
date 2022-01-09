@@ -14,7 +14,7 @@ export const NavA = styled.a`
     text-decoration: none;
 
     &:hover {
-        color: white;
+        color: #FFABE7;
     }
 
 `
