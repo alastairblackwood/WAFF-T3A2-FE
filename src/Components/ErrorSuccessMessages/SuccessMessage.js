@@ -2,31 +2,28 @@ import React from 'react'
 import styled from 'styled-components'
 import {AiOutlineAlert} from "react-icons/ai"
 
-const ErrorMessage = ({children}) => {
- 
-
-
+const SuccessMessage = () => {
     return (
-        <ErrorContainer className='alert alert-danger d-flex align-items-center' role="alert">
+        <SuccessContainer className='alert alert-danger d-flex align-items-center' role="alert">
                 <AlertIcon>
                     <AiOutlineAlert className='bi flex-shrink-0 me-2'/>
                 </AlertIcon>
-            <ErrorChildren>{children}</ErrorChildren>
- 
-        </ErrorContainer>
+            <SuccessChildren>Great success</SuccessChildren>
+         </SuccessContainer>
     )
 }
 
-export default ErrorMessage
+export default SuccessMessage
+
 export const AlertIcon  = styled.i`
     height: 45px;
 `
-export const ErrorContainer = styled.div`
+export const SuccessContainer = styled.div`
     /* height: 40px; */
     /* display: block; */
     
 `
 
-export const ErrorChildren = styled.p`
+export const SuccessChildren = styled.p`
     /* color: #A00808; */
 `

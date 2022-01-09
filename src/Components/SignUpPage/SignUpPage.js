@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import ErrorMessage from '../ErrorMessage'
+import ErrorMessage from '../ErrorSuccessMessages/ErrorMessage'
 import Loading from '../Loading'
 import FormInput from '../LogInPage/FormInput'
 import { Form } from '../LogInPage/LogInPageElements'

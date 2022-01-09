@@ -31,8 +31,7 @@ const Carousel = () => {
             // more stuff coming up
             return <CarouselCell key={id} className={films[0] === film ? "carousel-item active" : "carousel-item"} >
                 <img src={images[0]} className="d-block w-100" alt={name}/>
-                <CarouselButton>Book now</CarouselButton>
-                <CarouselButton>Show tickets and times</CarouselButton>
+                <CarouselButton className="btn">Times and Tickets</CarouselButton>
             </CarouselCell>
             })}
   </CarouselInner>

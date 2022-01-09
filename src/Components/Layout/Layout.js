@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
+import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
 import { OutletContainer } from './LayoutElements'
 
@@ -17,7 +18,7 @@ const Layout = () => {
             <OutletContainer>
                 <Outlet className="page-content"/>
             </OutletContainer>
-            {/* footer goes here */}
+            <Footer/>
         </div>
     )
 }

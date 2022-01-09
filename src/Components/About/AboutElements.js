@@ -19,5 +19,9 @@ export const AboutP = styled.p`
     color: white;
     font-size: 16px;
     font-family: ${props => props.theme.bitterFont};
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px){
+    font-size: 18px;
+}
 
 `

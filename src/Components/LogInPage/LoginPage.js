@@ -5,7 +5,8 @@ import Loading from '../Loading';
 import FormInput from './FormInput';
 import { Form, LoginContainer } from './LogInPageElements';
 import { useGlobalState } from '../../utils/stateContext';
-import ErrorMessage from '../ErrorMessage';
+import ErrorMessage from '../ErrorSuccessMessages/ErrorMessage';
+import SuccessMessage from '../ErrorSuccessMessages/SuccessMessage';
 
 const baseURL = "http://localhost:5000/api/v1/users/login"
 
@@ -16,7 +17,6 @@ const LogInPage = ({userInfo}) => {
 
     // set initial states for error and loading
     const [error, setError] = useState(false);
-    
     const [loading, setLoading] = useState(false)
     // set initial states for email and password
     const [values, setValues] = useState({
@@ -70,11 +70,12 @@ const LogInPage = ({userInfo}) => {
         
             // alert("logged in")
             userHasAuthenticated(true);
-            
+
             // log userInfo in localStorage in browser
             console.log(data)
+            console.log(success)
             localStorage.setItem("userInfo", JSON.stringify(data))
-             // turn off Loading sequence/spinner
+            // turn off Loading sequence/spinner
             setLoading(false);
 
             if (data.role === "admin"){
@@ -104,8 +105,7 @@ console.log(values)
             
             {loading && <Loading/>}
             {error && <ErrorMessage>{error}</ErrorMessage>}
-            {/* {errorMessage && <p>{errorMessage}</p>}
-            {successMessage && <p>{successMessage}</p>} */}
+
             <Form onSubmit={handleSubmit}>
                 {inputs.map((input) => (
                     <FormInput 

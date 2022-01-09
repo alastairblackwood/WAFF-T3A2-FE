@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScheduleContainer, ScheduleHeader, ScheduleHeader2, ScheduleHeader3, ScheduleSpan, ScheduleTable } from './ScheduleElements'
+import { ScheduleContainer, ScheduleHeader, ScheduleHeader2, ScheduleHeader3, ScheduleP, ScheduleSpan, ScheduleTable } from './ScheduleElements'
 
 const Schedule = () => {
 
@@ -57,13 +57,13 @@ const Schedule = () => {
                 return (
                     <>
                     <div className='col'>
-                        <p>{title}</p>
+                        <ScheduleP>{title}</ScheduleP>
                     </div>
                     <div className='col'>
-                        <p>{date}</p>
+                        <ScheduleP>{date}</ScheduleP>
                     </div>
                     <div className='col'>
-                        <p>{summary}</p>
+                        <ScheduleP>{summary}</ScheduleP>
                     </div>
                     </>
                 );
