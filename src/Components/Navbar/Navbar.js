@@ -29,23 +29,11 @@ const Navbar = ({isOpen, toggle}) => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav me-auto mb-2 mb-lg-0">
-                {/* <li className="nav-item"> */}
-                {/* <a className="nav-link active" aria-current="page" href="#">Films</a> */}
-                <Link to="/" className="nav-link" aria-current="page">Films</Link>
-                {/* </li> */}
-                {/* <li className="nav-item"> */}
+                <Link to="/films" className="nav-link" aria-current="page">Films</Link>
                 <Link to="/about" className="nav-link" aria-current="page">About</Link>
-                {/* </li> */}
-                {/* <li className="nav-item">
-                <Link to={`/users/${id}`} className="nav-link" aria-current="page">About</Link>
-                </li> */}
-                {/* <li className="nav-item"> */}
                 <Link to="/schedule" className="nav-link" aria-current="page">Schedule</Link>
-                {/* </li> */}
-                {/* <li className="nav-item"> */}
                 <a className="nav-link disabled">Disabled</a>
-                {/* </li> */}
-                {userHasAuthenticated ? 
+                            {userHasAuthenticated ? 
             (
                 <button onClick={handleLogout}>Logout</button>
             )

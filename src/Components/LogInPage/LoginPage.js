@@ -10,7 +10,7 @@ import SuccessMessage from '../ErrorSuccessMessages/SuccessMessage';
 
 const baseURL = "http://localhost:5000/api/v1/users/login"
 
-const LogInPage = ({userInfo}) => {
+const LogInPage = () => {
 
     // include global state context
     const { userHasAuthenticated } = useGlobalState();

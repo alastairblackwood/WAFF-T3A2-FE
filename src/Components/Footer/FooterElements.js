@@ -2,8 +2,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const FooterContainer = styled.div`
-    height: 30vh;
+    height: auto;
     background-color: ${props => props.theme.waffYellow};
+    width: 100%;
 `
 
 export const FooterLinksWrapper = styled.section`
@@ -29,5 +30,34 @@ export const FooterLinks = styled(Link)`
         &:active{
             color: #EAD04B;
         }
+
+`
+export const FooterTextWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+`
+export const FooterH2Wrapper = styled.div`
+    /* display: flex;
+    flex-flow: column; */
+    padding: 10px;
+    /* justify-content: center; */
+    text-align: center;
+    
+`
+export const FooterH2 = styled.h2`
+    font-family: 'Jost', sans-serif;
+    font-weight: bold;
+    
+`
+
+export const FooterIconWrapper = styled.div`
+    /* flex-flow: column wrap; */
+`
+
+export const FooterIconColumn = styled.div`
+    /* background-color: red; */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 
 `
