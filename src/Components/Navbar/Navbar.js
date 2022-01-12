@@ -1,19 +1,20 @@
 import React, { useContext } from 'react'
 import {BrowserRouter as Router, Routes, Route, Link, Navigate} from 'react-router-dom'
-import { useGlobalState } from '../../utils/stateContext';
+import { AuthContext } from '../../utils/stateContext';
 import {NavbarContainer, NavA} from './NavbarElements'
 import {IoClose} from "react-icons/io5"
 
 const Navbar = ({isOpen, toggle}) => {
-  const { userHasAuthenticated } = useGlobalState();
 
- const userid = localStorage.getItem("id")
- const user = localStorage.getItem("userInfo")
- console.log(user)
-  // will need to add this to navbar
+ // create useContext instance from stateContext.js AuthContext methods
+ const auth = useContext(AuthContext)
+
   const handleLogout = () => {
+    //removes userInfo from localStorage
     localStorage.removeItem("userInfo");
-    userHasAuthenticated(false);
+    // sets isUserLoggedIn to false
+    auth.logout();
+    alert("logged out successfully")
   }
  
     return (
@@ -21,7 +22,7 @@ const Navbar = ({isOpen, toggle}) => {
         <NavbarContainer isOpen={isOpen} className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
             <NavA className="navtitle" href="/">WES ANDERSON FILM FESTIVAL</NavA>
-            <button className="navbar-dd" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-d" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-d-icon" onClick={toggle}></span>
             </button>
             <button>
@@ -32,13 +33,12 @@ const Navbar = ({isOpen, toggle}) => {
                 <Link to="/films" className="nav-link" aria-current="page">Films</Link>
                 <Link to="/about" className="nav-link" aria-current="page">About</Link>
                 <Link to="/schedule" className="nav-link" aria-current="page">Schedule</Link>
-                <a className="nav-link disabled">Disabled</a>
-                            {userHasAuthenticated ? 
+            {auth.isLoggedIn ? 
             (
                 <button onClick={handleLogout}>Logout</button>
             )
             : (
-            <button>Login</button>
+            <Link to="/login">Login</Link>
             )}
               </div>
 

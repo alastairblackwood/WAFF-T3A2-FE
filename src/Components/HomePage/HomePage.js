@@ -17,14 +17,12 @@ const HomePage = () => {
     <Carousel/>
     <About/>
     <Schedule/>
-    <a href="/login">
+    {/* <a href="/login">
         Login
     </a>
     <a href="/signup">
         Sign Up
-    </a>
-
-
+    </a> */}
         </div>
 
     )

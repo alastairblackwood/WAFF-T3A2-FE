@@ -1,9 +1,20 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { FooterContainer, FooterA, FooterH2Wrapper, FooterYellow, FooterIconWrapper, FooterLinks, FooterLinksWrapper, FooterTextWrapper, FooterSpan, FooterIcons, FooterIconLink } from './FooterElements'
 import {ImInstagram, ImYoutube, ImTwitter, ImFacebook2} from "react-icons/im";
-
+import { AuthContext } from '../../utils/stateContext';
 
 const Footer = () => {
+
+    const auth = useContext(AuthContext)
+
+    const handleLogout = () => {
+      //removes userInfo from localStorage
+      localStorage.removeItem("userInfo");
+      // sets isUserLoggedIn to false
+      auth.logout();
+      alert("logged out successfully")
+    }
+
     return (
         <FooterContainer>
                 <FooterLinksWrapper className="">
@@ -19,7 +30,13 @@ const Footer = () => {
                         <FooterLinks to="/schedule">Schedule</FooterLinks>
                         </div>
                         <div className="col">
-                        <FooterLinks to="/login">Login</FooterLinks>
+                        {auth.isLoggedIn ? 
+                        (
+                            <FooterLinks onClick={handleLogout} to="#">Logout</FooterLinks>
+                        ): (
+                            <FooterLinks to="/login">Login</FooterLinks>
+                        )
+                    }
                         </div>
                     </div>
                 </div>

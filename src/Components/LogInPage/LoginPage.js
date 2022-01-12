@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {useNavigate, Link} from "react-router-dom"
 import Loading from '../Loading';
 import FormInput from './FormInput';
@@ -7,13 +7,15 @@ import { Form, LoginContainer } from './LogInPageElements';
 import { useGlobalState } from '../../utils/stateContext';
 import ErrorMessage from '../ErrorSuccessMessages/ErrorMessage';
 import SuccessMessage from '../ErrorSuccessMessages/SuccessMessage';
+import {AuthContext} from '../../utils/stateContext';
 
 const baseURL = "http://localhost:5000/api/v1/users/login"
 
 const LogInPage = () => {
+    
+    // create useContext instance from stateContext.js AuthContext methods
+    const auth = useContext(AuthContext);
 
-    // include global state context
-    const { userHasAuthenticated } = useGlobalState();
 
     // set initial states for error and loading
     const [error, setError] = useState(false);
@@ -45,6 +47,7 @@ const LogInPage = () => {
     ]
     const history = useNavigate();
 
+    // on button submit
     const handleSubmit = async (e) => {
         e.preventDefault();
         
@@ -68,8 +71,8 @@ const LogInPage = () => {
                 config
                 );
         
-            // alert("logged in")
-            userHasAuthenticated(true);
+                auth.login();
+                // alert("logged in")
 
             // log userInfo in localStorage in browser
             console.log(data)
@@ -83,8 +86,8 @@ const LogInPage = () => {
                 history("/")
             }    
         } catch (error) {
-            setError(error.response.data.message)
             setLoading(false);
+            setError(error.response.data.message)
         }
 
     };
@@ -94,9 +97,6 @@ const LogInPage = () => {
         setValues({...values, [e.target.name]: e.target.value})
     }
 
-
-console.log(values)
-
     return (
     
         <LoginContainer >
@@ -104,7 +104,6 @@ console.log(values)
             
             {loading && <Loading/>}
             {error && <ErrorMessage>{error}</ErrorMessage>}
-
             <Form onSubmit={handleSubmit}>
                 {inputs.map((input) => (
                     <FormInput 

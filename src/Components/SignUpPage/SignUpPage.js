@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import ErrorMessage from '../ErrorSuccessMessages/ErrorMessage'
 import Loading from '../Loading'
 import FormInput from '../LogInPage/FormInput'
 import { Form } from '../LogInPage/LogInPageElements'
+import { AuthContext } from '../../utils/stateContext';
 
 const baseURL = "http://localhost:5000/api/v1/users/signup"
 
 const SignUpPage = () => {
-   
+    
+    // create useContext instance from stateContext.js AuthContext methods
+    const auth = useContext(AuthContext);
+    // set initial form states
     const [values, setValues] = useState({
         name: "",
         email: "",
@@ -21,8 +25,7 @@ const SignUpPage = () => {
     const [error, setError] = useState(false);
     const [loading,setLoading] = useState(false)
 
-
-
+    // form inputs
     const inputs = [
         {
             id: "1",
@@ -58,10 +61,9 @@ const SignUpPage = () => {
         },
     ]
 
-    
+    //on button submit
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
         
         if(values.password !== values.passwordConfirm){
             setMessage("Passwords do not match.")
@@ -87,8 +89,11 @@ const SignUpPage = () => {
             },
             config
                 );
-                
+                // turn off loader
                 setLoading(false);
+                // set global state to logged in
+                auth.logIn();
+                //set userInfo inside localStorage
                 localStorage.setItem("userInfo", JSON.stringify(data));
 
                 
@@ -96,10 +101,8 @@ const SignUpPage = () => {
               setError(error.response.data.message);
               setLoading(false);
             }
-        }
+        };
         
-
-        console.log(values.email)
     }
  
     const onChange = (e) => {

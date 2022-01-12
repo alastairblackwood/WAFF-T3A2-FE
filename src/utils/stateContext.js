@@ -1,5 +1,9 @@
-import {createContext, useContext} from 'react'
+import {createContext} from 'react'
 
-export const StateContext = createContext(null)
 
-export const useGlobalState = () => useContext(StateContext)
+export const AuthContext = createContext({
+    isLoggedIn: false, 
+    login: ()=> {}, 
+    logout: () => {}
+});
+

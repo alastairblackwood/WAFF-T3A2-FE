@@ -1,8 +1,8 @@
 import './App.css';
 import {ThemeProvider} from 'styled-components';
-import React,{useState} from 'react'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import {StateContext} from './utils/stateContext'
+import React,{useState, useCallback} from 'react'
+import {BrowserRouter as  Router, Routes, Route} from 'react-router-dom'
+import {AuthContext} from './utils/stateContext'
 import Layout from './Components/Layout/Layout';
 import HomePage from './Components/HomePage/HomePage';
 import Films from './Components/Films/Films'
@@ -15,22 +15,24 @@ import Schedule from './Components/Schedule/Schedule';
 
 const App = () => {
   
-  const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  const login = useCallback(() => {
+    setIsLoggedIn(true);
+  }, []);
+  
+  const logout = useCallback(() => {
+    setIsLoggedIn(false);
+  }, []);
 
-  // will need to add this to navbar
-  const handleLogout = () => {
-    localStorage.removeItem("userInfo");
-    userHasAuthenticated(false);
-  }
- 
   return (
     <>
-    <StateContext.Provider value={{ isAuthenticated, userHasAuthenticated}}>
+    <AuthContext.Provider value={{isLoggedIn: isLoggedIn, login: login, logout: logout }}>
       <ThemeProvider theme={theme}>
         <Routes>
+          {/* Layout parent to display children in Outlet */}
           <Route path='/' element={<Layout/>}>
             <Route index element={<HomePage/>} exact />   
-            {/* uncomment film to get film posts */}
             <Route path='/films' element={<Films/>} exact >
               <Route path='/films/:id' element={<Film/>}/>
             </Route>
@@ -38,20 +40,10 @@ const App = () => {
             <Route path='/schedule' element={<Schedule/>} exact  />
             <Route path='/login' element={<LogIn/>} exact  />
             <Route path='/signup' element={<SignUpPage/>} exact />
-            {/* <Route path='/login' element={<LogIn/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
-            <Route path='/signup' element={<SignUpPage/>} exact loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> */}
-        </Route>
+             </Route>
         </Routes>
-      {/* {isAuthenticated ? 
-            (
-                <button onClick={handleLogout}>Logout</button>
-            )
-            : (
-            <button>Login</button>
-            )} */}
-      {/* <Logout/> */}
       </ThemeProvider>
-    </StateContext.Provider>
+      </AuthContext.Provider>
     </>
   );
 }
