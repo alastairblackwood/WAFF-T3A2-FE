@@ -5,7 +5,7 @@ import ListFilmList from "./ListFilmList";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
 
-function ListFilm({ listFilms, completeListFilm }) {
+function ListFilm({ listFilms, completeListFilm, removeListFilm }) {
   const [edit, setEdit] = useState({
     id: null,
     value: "",
@@ -22,8 +22,14 @@ function ListFilm({ listFilms, completeListFilm }) {
         {listFilm.text}
       </Div2>
       <Div3 className="icons">
-        <RiCloseCircleLine />
-        <TiEdit />
+        <RiCloseCircleLine
+          onClick={() => removeListFilm(listFilm.id)}
+          className="delete-icon"
+        />
+        <TiEdit
+          onClick={() => setEdit({ id: listFilm.id, value: listFilm.text })}
+          className="edit-icon"
+        />
       </Div3>
     </Div1>
   ));
