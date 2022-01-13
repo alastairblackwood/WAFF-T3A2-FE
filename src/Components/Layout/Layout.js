@@ -6,15 +6,11 @@ import { OutletContainer } from './LayoutElements'
 
 const Layout = () => {
     
-    const [isOpen,setIsOpen] = useState(false);
-    // toggle true/false if open/closed
-    const toggle = () => {
-        setIsOpen(!isOpen);
-    }
+
 
     return (
         <div>
-            <Navbar toggle={toggle}/>
+            <Navbar/>
             <OutletContainer>
                 <Outlet className="page-content"/>
             </OutletContainer>
