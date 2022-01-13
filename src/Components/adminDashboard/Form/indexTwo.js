@@ -7,13 +7,6 @@
 
 // app.use(express.json());
 
-// mongoose.connect(
-//   "mongodb+srv://ablackwood:kH6DEywNVpVXsmct@cluster0.vgef1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-//   {
-//     useNewUrlParser: true,
-//   }
-// );
-
 // app.get("/", async (req, res) => {
 //   const filmName = req.body.filmName;
 //   const year = req.body.year;
