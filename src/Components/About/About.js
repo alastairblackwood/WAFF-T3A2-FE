@@ -6,13 +6,11 @@ const About = () => {
         <AboutContainer>
             <AboutH1>ABOUT WES ANDERSON FILM FESTIVAL 20xx</AboutH1>
             <AboutP>
-                In celebration of reknowned American filmmaker Wes Anderson, Motion Picture Cinema will be hosting a Wes Anderson Themed Film Festival from X Date to Y Date!
+                In celebration of reknowned American filmmaker Wes Anderson, Motion Picture Cinema will be hosting a Wes Anderson Themed Film Festival from the 17th January to the 30th January!
                 <br/>                
                 <br/>                
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam congue felis et aliquet pellentesque. Praesent ullamcorper ullamcorper velit ut consectetur. In ut felis turpis. Integer consectetur blandit tincidunt. Nullam feugiat iaculis dui ut varius. Nam ex tortor, tempor lacinia lorem vel, iaculis interdum purus. Quisque at arcu nisl. 
-                <br/>          
-                <br/>          
-                Nam sed lectus lobortis nisl lobortis rhoncus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec quis nisi sem. Aenean et mi lacinia, pharetra libero ultrices, consequat turpis. Integer et nisl eget augue mollis pellentesque ac euismod urna. Vestibulum commodo ipsum leo, eget hendrerit eros molestie ut. Nunc porttitor sem id velit congue ultrices.
+                In celebration of Wes Anderson's latest anthology comedy film The French Dispatch, Motion Picture Cinema is proud to present a handful of films from the auteur's filmography.         
+                From his debut film, Bottle Rocket, his cult classics The Life Aquatic and The Grand Budapest Hotel, to his animated films Fantastic Mr. Fox and Isle of Dogs, get ready to laugh, cry and enjoy the aesthetics of Wes Anderson.
                 <br/>
                 <br/>
                 Ut sagittis viverra felis in suscipit. Aliquam vel sodales magna, vel aliquet nisl. Nunc aliquam, turpis eget suscipit rhoncus, metus ipsum posuere sem, quis tempor enim eros vitae felis. Aenean molestie purus ipsum, quis interdum nunc tempus a. </AboutP>
