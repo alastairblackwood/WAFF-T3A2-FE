@@ -1,11 +1,15 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { Card, CardButton, CardImage, FilmCardContainer, FilmsContainer, FilmsH1 } from './FilmCardsElements';
+import { AuthContext } from '../../utils/stateContext';
 
 
 const baseURL = "http://localhost:5000/api/v1/films"
 
 const Films = () => {
+
+	// create useContext instance from stateContext.js AuthContext methods
+	const auth = useContext(AuthContext)
 
 	const [films,setFilms] = useState([]);
 	const [filmtimes, setFilmTime] = useState([])
@@ -20,6 +24,9 @@ const Films = () => {
 	
 	return (
 		<FilmsContainer>
+			            {auth.isAdmin && 
+						<p>Admin bruh</p>
+						}
 			<FilmCardContainer className='films container'>
 				<FilmsH1 className="text-uppercase">Films</FilmsH1>
 							{films.map((film) => {

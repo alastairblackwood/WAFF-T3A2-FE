@@ -80,7 +80,10 @@ const LogInPage = () => {
             // turn off Loading sequence/spinner
             setLoading(false);
             console.log(data.data);
-            if (data.data.role === "admin"){
+            console.log(data.data.user["role"])
+            if (data.data.user["role"] === "admin"){
+                auth.adminRole()
+                console.log(auth.adminRole)
                 history("/about")
             } else {
                 history("/")
