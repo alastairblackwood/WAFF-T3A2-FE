@@ -34,7 +34,10 @@ export const NavA = styled(Link)`
     &:hover {
         color: #FFABE7;
     }
-
+    :active{
+        color: white;
+        text-decoration: none;
+    }
     @media only screen and (max-width: 420px) {
     font-size: 18px;
 }
