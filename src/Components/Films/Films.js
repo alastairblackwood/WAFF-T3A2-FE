@@ -1,37 +1,55 @@
-// import React from 'react'
-// import {Link} from 'react-router-dom'
-// import styled from 'styled-components'
-// import Film from './Film'
-// import {useGlobalState} from '../utils/stateContext'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Card, CardButton, CardImage, FilmCardContainer, FilmsContainer, FilmsH1 } from './FilmCardsElements';
 
-// const StyledLink = styled(Link) `
-// 	text-decoration: none;
-// `
-// export default function Films() {
-// 	const {store} = useGlobalState()
-// 	const {films} = store
-// 	if(!films) return null
 
-// 	return  (
-// 		<div>
-// 			{films.map((film,index) => {
-// 				return (
-// 					<StyledLink key={film.id} to={`/films/${film.id}`}>
-// 						<Film index={index} film={film} />
-// 					</StyledLink>
-// 				)
-// 			})}
-// 		</div>
-// 	)
-// }
-
-import React from 'react'
+const baseURL = "http://localhost:5000/api/v1/films"
 
 const Films = () => {
+
+	const [films,setFilms] = useState([]);
+	const [filmtimes, setFilmTime] = useState([])
+    useEffect(async () => {
+        axios.get(baseURL).then((response) => {
+            // const filmslist = response.data.data.data
+            setFilms(response.data.data.data);
+			setFilmTime(response.data.data.data[0].showtime);
+        }) 			
+		.catch(err=> console.log(err));
+    },[]);
+	
 	return (
-		<div>
-			films
-		</div>
+		<FilmsContainer>
+			<FilmCardContainer className='films container'>
+				<FilmsH1 className="text-uppercase">Films</FilmsH1>
+							{films.map((film) => {
+								const {id, name, summary, startDates, imageCover} = film
+								const test2 = film.startDates.map((inner) => {
+									return <li key={inner} >{inner.slice(0,10)}</li>
+								})
+								return (
+								<Card className='card mb-3'>
+									<div className='row g-0'>
+										<CardImage key={imageCover} className='col-md-4'>
+										{imageCover}	
+										</CardImage>
+										<div className='col-md-8'>
+											<div className="card-body" key={id}>
+												<FilmsH1 className="text-uppercase" key={name}>{name}</FilmsH1>
+												<p key={summary}>{summary}</p>
+												<h5 style={{color: "#FFD80B", fontWeight: "bold"}}>Film Dates</h5>
+												<ul key={startDates} style={{listStyleType:"circle"}}>
+													{test2}
+												</ul>
+												<CardButton className="text-uppercase">See more</CardButton>
+											</div>	
+										</div>
+									</div>
+								</Card>
+									)
+							})}
+			</FilmCardContainer>
+		</FilmsContainer>
 	)
 }
 

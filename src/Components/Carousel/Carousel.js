@@ -19,7 +19,8 @@ const Carousel = () => {
         });
     },[]);
     console.log(films)
-    if (!films) return null;
+    if (!films) 
+    return null;
 
     return (
         <>
@@ -27,10 +28,9 @@ const Carousel = () => {
   <CarouselInner className="carousel-inner">
   {films.map((film) => {
             const {id, imageCover, name} = film;
-            console.log(films[0])
             // more stuff coming up
             return <CarouselCell key={id} className={films[0] === film ? "carousel-item active" : "carousel-item"} >
-                <img src={`${baseURL}/${imageCover}`} className="d-block w-100" alt={name}/>
+                <img src={`${baseURL}/${id}/${imageCover}`} className="d-block w-100" alt={name}/>
                 <CarouselButton className="btn">Times and Tickets</CarouselButton>
             </CarouselCell>
             })}

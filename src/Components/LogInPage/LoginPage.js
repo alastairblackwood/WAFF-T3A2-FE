@@ -79,8 +79,8 @@ const LogInPage = () => {
             localStorage.setItem("userInfo", JSON.stringify(data))
             // turn off Loading sequence/spinner
             setLoading(false);
-
-            if (data.role === "admin"){
+            console.log(data.data);
+            if (data.data.role === "admin"){
                 history("/about")
             } else {
                 history("/")
