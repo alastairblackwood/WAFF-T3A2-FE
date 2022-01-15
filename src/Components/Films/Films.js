@@ -29,6 +29,7 @@ const Films = () => {
 						}
 			<FilmCardContainer className='films container'>
 				<FilmsH1 className="text-uppercase">Films</FilmsH1>
+				<img src={`http://localhost:5000/public/img/films/grandbudapesthotel.jpeg`}></img>
 							{films.map((film, index) => {
 								const {id, name, summary, startDates, imageCover} = film
 								const test2 = film.startDates.map((inner) => {
@@ -48,7 +49,7 @@ const Films = () => {
 												<ul key={startDates} style={{listStyleType:"circle"}}>
 													{test2}
 												</ul>
-												<CardButton key={id} className="text-uppercase">See more</CardButton>
+												<CardButton to={`/films/${film.id}`} key={id} className="text-uppercase">See more</CardButton>
 											</div>	
 										</div>
 									</div>

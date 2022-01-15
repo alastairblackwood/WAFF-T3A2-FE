@@ -6,6 +6,9 @@ export const AuthContext = createContext({
     login: ()=> {}, 
     logout: () => {},
     isAdmin: false,
-    AdminRole: () => {}
+    AdminRole: () => {},
+    isLoading: false,
+    loading: () => {},
+    notloading: () => {},
 });
 

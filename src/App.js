@@ -15,8 +15,11 @@ import Schedule from './Components/Schedule/Schedule';
 
 const App = () => {
   
+  //set up useState and callback functions for statecontext
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdmin, setAdmin] = useState(false)
+  const [isAdmin, setAdmin] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const login = useCallback(() => {
     setIsLoggedIn(true);
   }, []);
@@ -27,11 +30,19 @@ const App = () => {
 
   const adminRole = useCallback(()=> {
     setAdmin(true)
-  })
+  }, [])
+
+  const loading = useCallback(()=> {
+    setIsLoading(true);
+  }, [])
+
+  const notloading = useCallback(()=> {
+    setIsLoading(false);
+  }, [])
 
   return (
     <>
-    <AuthContext.Provider value={{isLoggedIn: isLoggedIn, login: login, logout: logout, isAdmin: isAdmin, adminRole: adminRole }}>
+    <AuthContext.Provider value={{isLoggedIn: isLoggedIn, login: login, logout: logout, isAdmin: isAdmin, adminRole: adminRole, isLoading: isLoading, loading: loading, notloading: notloading }}>
       <ThemeProvider theme={theme}>
         <Routes>
           {/* Layout parent to display children in Outlet */}

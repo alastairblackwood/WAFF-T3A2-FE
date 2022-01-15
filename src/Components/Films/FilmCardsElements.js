@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Link} from "react-router-dom"
 
 export const FilmsContainer = styled.div`
     height: auto;
@@ -33,7 +34,7 @@ export const CardImage = styled.div`
     background-color: ${props => props.theme.waffBlue};
 `
 
-export const CardButton = styled.button`
+export const CardButton = styled(Link)`
     height: auto;
     width: auto;
     padding: 5px;

@@ -19,7 +19,7 @@ const LogInPage = () => {
 
     // set initial states for error and loading
     const [error, setError] = useState(false);
-    const [loading, setLoading] = useState(false)
+    // const [loading, setLoading] = useState(false)
     // set initial states for email and password
     const [values, setValues] = useState({
         email: "",
@@ -59,8 +59,8 @@ const LogInPage = () => {
             }
             
             // begin Loading sequence/spinner
-            setLoading(true)
-
+            // setLoading(true)
+            auth.loading();
             // post the request on pressing submit, posting the input values
             const { data } = await axios.post(
                 baseURL,
@@ -78,7 +78,9 @@ const LogInPage = () => {
             console.log(data)
             localStorage.setItem("userInfo", JSON.stringify(data))
             // turn off Loading sequence/spinner
-            setLoading(false);
+            // setLoading(false);
+            auth.notloading();
+
             console.log(data.data);
             console.log(data.data.user["role"])
             if (data.data.user["role"] === "admin"){
@@ -89,7 +91,8 @@ const LogInPage = () => {
                 history("/")
             }    
         } catch (error) {
-            setLoading(false);
+            // setLoading(false);
+            auth.notloading();
             setError(error.response.data.message)
         }
 
@@ -105,7 +108,7 @@ const LogInPage = () => {
         <LoginContainer >
             <h2>Login</h2>
             
-            {loading && <Loading/>}
+            {auth.isLoading && <Loading/>}
             {error && <ErrorMessage>{error}</ErrorMessage>}
             <Form onSubmit={handleSubmit}>
                 {inputs.map((input) => (
