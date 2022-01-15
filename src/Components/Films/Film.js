@@ -4,12 +4,12 @@ import { FilmContainer } from './FilmElements';
 import { AuthContext } from '../../utils/stateContext';
 import axios from 'axios';
 
-const baseURL = "http://localhost:5000/api/v1/films"
+// const baseURL = "http://localhost:5000/api/v1/films"
 
 const Film = () => {
 
 	let params = useParams();
-
+	const baseURL = `http://localhost:5000/api/v1/films/${params.id}`
 	// create useContext instance from stateContext.js AuthContext methods
 	const auth = useContext(AuthContext)
 	// useState initialising
@@ -31,6 +31,9 @@ const Film = () => {
 		return null;
     }
 
+	console.log(film)
+	// console.log(film.get(images))
+	
 
 	return (
 		
