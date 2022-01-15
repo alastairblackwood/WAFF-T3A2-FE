@@ -10,5 +10,7 @@ export const AuthContext = createContext({
     isLoading: false,
     loading: () => {},
     notloading: () => {},
+    films: ([]),
+    setFilms: () => {}
 });
 

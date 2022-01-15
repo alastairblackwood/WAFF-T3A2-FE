@@ -13,6 +13,7 @@ import SignUpPage from './Components/SignUpPage/SignUpPage';
 import { theme } from './Components/SharedStyles/styledFonts';
 import Schedule from './Components/Schedule/Schedule';
 import Nothing from './Components/Nothing/Nothing';
+import FilmLayout from './Components/Films/FilmLayout';
 
 const App = () => {
   
@@ -41,6 +42,8 @@ const App = () => {
     setIsLoading(false);
   }, [])
 
+  
+
   return (
     <>
     <AuthContext.Provider value={{isLoggedIn: isLoggedIn, login: login, logout: logout, isAdmin: isAdmin, adminRole: adminRole, isLoading: isLoading, loading: loading, notloading: notloading }}>
@@ -48,10 +51,12 @@ const App = () => {
         <Routes>
           {/* Layout parent to display children in Outlet */}
           <Route path='/' element={<Layout/>}>
-            <Route index element={<HomePage/>} exact />   
-            <Route path='/films' element={<Films/>} exact >
-              <Route path=':id' element={<Film/>} exact/>
-            </Route>
+            <Route index element={<HomePage/>} exact /> 
+            <Route path="/films" elmement={<FilmLayout/>}> 
+              <Route index element={<Films  /> } exact />
+              <Route path=':id' element={<Film />} exact/>
+              {/* </Route> */}
+            </Route> 
             <Route path='/about' element={<About/>} exact  />
             <Route path='/schedule' element={<Schedule/>} exact  />
             <Route path='/login' element={<LogIn/>} exact  />

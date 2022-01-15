@@ -1,5 +1,12 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+export const CarouselLoader = styled.div`
+    background-color: ${props => props.theme.waffBlue};
+    display: flex;
+    justify-context: center;
+    
+`
 export const CarouselContainer = styled.div `
 margin: 0 auto;
 width: 100%;
@@ -30,7 +37,7 @@ height: 200px;
 
 
 `
-export const CarouselButton = styled.button`
+export const CarouselButton = styled(Link)`
     background-color: ${props => props.theme.waffYellow};
     height: 40px;
     width: 200px;

@@ -4,7 +4,7 @@ import { Card, CardButton, CardImage, FilmCardContainer, FilmsContainer, FilmsH1
 import { AuthContext } from '../../utils/stateContext';
 import Loading from '../Loading';
 import Film from './Film'
-import {Route, Routes} from "react-router-dom"
+import {Route, Routes, Outlet} from "react-router-dom"
 
 const baseURL = "http://localhost:5000/api/v1/films"
 
@@ -13,9 +13,9 @@ const Films = () => {
 	// create useContext instance from stateContext.js AuthContext methods
 	const auth = useContext(AuthContext)
 	// useState initialising
+	
 	const [films,setFilms] = useState([]);
-	const [filmtimes, setFilmTime] = useState([])
-
+	const [filmtimes, setFilmTime] = useState([]);
 	// useEffect to get film data
 	useEffect(async () => {
 		auth.loading()
@@ -27,7 +27,11 @@ const Films = () => {
         }) 			
 		.catch(err=> console.log(err));
     },[]);
-	
+
+	if(!films){
+        return null;
+    }
+
 	return (
 		<FilmsContainer>
 						{/* if user === admin do this */}
@@ -35,7 +39,6 @@ const Films = () => {
 						<p>Admin bruh</p>
 						}
 			<FilmCardContainer className='films container'>
-				<Film/>
 				<FilmsH1 className="text-uppercase">Films</FilmsH1>
 				{/* when data is loading show spinner */}
 				{auth.isLoading && <Loading/>}
@@ -67,7 +70,6 @@ const Films = () => {
 									)
 							})}
 			</FilmCardContainer>
-
 		</FilmsContainer>
 	)
 }

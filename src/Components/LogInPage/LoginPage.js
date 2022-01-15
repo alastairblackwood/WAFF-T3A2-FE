@@ -84,7 +84,7 @@ const LogInPage = () => {
             if (data.data.user["role"] === "admin"){
                 auth.adminRole()
                 console.log(auth.adminRole)
-                history("/about")
+                history("/films")
             } else {
                 history("/")
             }    
