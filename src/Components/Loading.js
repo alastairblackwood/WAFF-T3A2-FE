@@ -1,10 +1,15 @@
 import React from 'react'
 import MDSpinner from "react-md-spinner";
+import { ssrBehavior } from "react-md-spinner";
 
 const Loading = ({size = 100}) => {
 
     return (
+        <>
+        <head>{ssrBehavior.getStylesheetComponent()}</head>
+       
         <div 
+        
         style={{
             display:"flex",
             justifyContent: "center",
@@ -13,9 +18,10 @@ const Loading = ({size = 100}) => {
             height: "100%", 
         }}
         >
-    <MDSpinner />
+    <MDSpinner size={50} borderSize={15} color1="#FFD80B"/>
 
         </div>
+         </>
     )
 }
 

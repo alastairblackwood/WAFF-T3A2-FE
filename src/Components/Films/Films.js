@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react'
 import { Card, CardButton, CardImage, FilmCardContainer, FilmsContainer, FilmsH1 } from './FilmCardsElements';
 import { AuthContext } from '../../utils/stateContext';
-
+import Loading from '../Loading';
 
 const baseURL = "http://localhost:5000/api/v1/films"
 
@@ -14,10 +14,12 @@ const Films = () => {
 	const [films,setFilms] = useState([]);
 	const [filmtimes, setFilmTime] = useState([])
     useEffect(async () => {
+		auth.loading()
         axios.get(baseURL).then((response) => {
             // const filmslist = response.data.data.data
             setFilms(response.data.data.data);
 			setFilmTime(response.data.data.data[0].showtime);
+			auth.notloading()
         }) 			
 		.catch(err=> console.log(err));
     },[]);
@@ -29,6 +31,7 @@ const Films = () => {
 						}
 			<FilmCardContainer className='films container'>
 				<FilmsH1 className="text-uppercase">Films</FilmsH1>
+				{auth.isLoading && <Loading/>}
 				<img src={`http://localhost:5000/public/img/films/grandbudapesthotel.jpeg`}></img>
 							{films.map((film, index) => {
 								const {id, name, summary, startDates, imageCover} = film

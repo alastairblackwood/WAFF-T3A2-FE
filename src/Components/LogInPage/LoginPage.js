@@ -19,7 +19,6 @@ const LogInPage = () => {
 
     // set initial states for error and loading
     const [error, setError] = useState(false);
-    // const [loading, setLoading] = useState(false)
     // set initial states for email and password
     const [values, setValues] = useState({
         email: "",
@@ -78,7 +77,6 @@ const LogInPage = () => {
             console.log(data)
             localStorage.setItem("userInfo", JSON.stringify(data))
             // turn off Loading sequence/spinner
-            // setLoading(false);
             auth.notloading();
 
             console.log(data.data);
@@ -91,7 +89,6 @@ const LogInPage = () => {
                 history("/")
             }    
         } catch (error) {
-            // setLoading(false);
             auth.notloading();
             setError(error.response.data.message)
         }
