@@ -12,6 +12,7 @@ import LogIn from './Components/LogInPage/LoginPage';
 import SignUpPage from './Components/SignUpPage/SignUpPage';
 import { theme } from './Components/SharedStyles/styledFonts';
 import Schedule from './Components/Schedule/Schedule';
+import Nothing from './Components/Nothing/Nothing';
 
 const App = () => {
   
@@ -49,13 +50,15 @@ const App = () => {
           <Route path='/' element={<Layout/>}>
             <Route index element={<HomePage/>} exact />   
             <Route path='/films' element={<Films/>} exact >
-              <Route path='/films/:id' element={<Film/>}/>
+              <Route path=':id' element={<Film/>} exact/>
             </Route>
             <Route path='/about' element={<About/>} exact  />
             <Route path='/schedule' element={<Schedule/>} exact  />
             <Route path='/login' element={<LogIn/>} exact  />
             <Route path='/signup' element={<SignUpPage/>} exact />
-             </Route>
+            <Route path="*" element={<Nothing/>}
+    />
+          </Route>
         </Routes>
       </ThemeProvider>
       </AuthContext.Provider>

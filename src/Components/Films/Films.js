@@ -3,6 +3,8 @@ import React, { useEffect, useState, useContext } from 'react'
 import { Card, CardButton, CardImage, FilmCardContainer, FilmsContainer, FilmsH1 } from './FilmCardsElements';
 import { AuthContext } from '../../utils/stateContext';
 import Loading from '../Loading';
+import Film from './Film'
+import {Route, Routes} from "react-router-dom"
 
 const baseURL = "http://localhost:5000/api/v1/films"
 
@@ -10,10 +12,12 @@ const Films = () => {
 
 	// create useContext instance from stateContext.js AuthContext methods
 	const auth = useContext(AuthContext)
-
+	// useState initialising
 	const [films,setFilms] = useState([]);
 	const [filmtimes, setFilmTime] = useState([])
-    useEffect(async () => {
+
+	// useEffect to get film data
+	useEffect(async () => {
 		auth.loading()
         axios.get(baseURL).then((response) => {
             // const filmslist = response.data.data.data
@@ -26,11 +30,14 @@ const Films = () => {
 	
 	return (
 		<FilmsContainer>
+						{/* if user === admin do this */}
 			            {auth.isAdmin && 
 						<p>Admin bruh</p>
 						}
 			<FilmCardContainer className='films container'>
+				<Film/>
 				<FilmsH1 className="text-uppercase">Films</FilmsH1>
+				{/* when data is loading show spinner */}
 				{auth.isLoading && <Loading/>}
 				<img src={`http://localhost:5000/public/img/films/grandbudapesthotel.jpeg`}></img>
 							{films.map((film, index) => {
@@ -52,7 +59,7 @@ const Films = () => {
 												<ul key={startDates} style={{listStyleType:"circle"}}>
 													{test2}
 												</ul>
-												<CardButton to={`/films/${film.id}`} key={id} className="text-uppercase">See more</CardButton>
+												<CardButton to={`${film.id}`} key={id} className="text-uppercase">See more</CardButton>
 											</div>	
 										</div>
 									</div>
@@ -60,6 +67,7 @@ const Films = () => {
 									)
 							})}
 			</FilmCardContainer>
+
 		</FilmsContainer>
 	)
 }
