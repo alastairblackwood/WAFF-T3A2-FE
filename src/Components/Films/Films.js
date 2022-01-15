@@ -29,26 +29,26 @@ const Films = () => {
 						}
 			<FilmCardContainer className='films container'>
 				<FilmsH1 className="text-uppercase">Films</FilmsH1>
-							{films.map((film) => {
+							{films.map((film, index) => {
 								const {id, name, summary, startDates, imageCover} = film
 								const test2 = film.startDates.map((inner) => {
 									return <li key={inner} >{inner.slice(0,10)}</li>
 								})
 								return (
-								<Card className='card mb-3'>
+								<Card key={index} className='card mb-3'>
 									<div className='row g-0'>
 										<CardImage key={imageCover} className='col-md-4'>
 										{imageCover}	
 										</CardImage>
 										<div className='col-md-8'>
-											<div className="card-body" key={id}>
+											<div className="card-body" key={index}>
 												<FilmsH1 className="text-uppercase" key={name}>{name}</FilmsH1>
 												<p key={summary}>{summary}</p>
 												<h5 style={{color: "#FFD80B", fontWeight: "bold"}}>Film Dates</h5>
 												<ul key={startDates} style={{listStyleType:"circle"}}>
 													{test2}
 												</ul>
-												<CardButton className="text-uppercase">See more</CardButton>
+												<CardButton key={id} className="text-uppercase">See more</CardButton>
 											</div>	
 										</div>
 									</div>
