@@ -59,13 +59,14 @@ const App = () => {
             <Route path="/films" elmement={<FilmLayout/>}> 
               <Route index element={<Films  /> } exact />
               <Route path=':id' element={<Film />} exact />
+              <Route path=':id/booking' element={<BookingForm/>} exact />
+
               {/* </Route> */}
             </Route> 
             <Route path='/about' element={<About/>} exact  />
             <Route path='/schedule' element={<Schedule/>} exact  />
             <Route path='/login' element={<LogIn/>} exact  />
             <Route path='/signup' element={<SignUpPage/>} exact />
-            <Route path='/booking' element={<BookingForm/>} exact />
             <Route path='/success' element={<BookingSuccess/>} exact />
             <Route path='/cancelled' element={<BookingCancelled/>} exact />
             <Route path="*" element={<Nothing/>}/>

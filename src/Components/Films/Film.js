@@ -13,6 +13,7 @@ const Film = () => {
 		clientSecret: '{{CLIENT_SECRET}}',
 	  };
 	let params = useParams();
+	console.log(params)
 	const baseURL = `http://localhost:5000/api/v1/films/${params.id}`
 	const herokuURL = `https://wesandersonfilmfestival.herokuapp.com/api/v1/films/${params.id}`
 	// create useContext instance from stateContext.js AuthContext methods
@@ -60,15 +61,13 @@ const Film = () => {
 
 		<FilmTimesContainer>
 
-            {/* {auth.isLoggedIn ? 
+            {auth.isLoggedIn ? 
             (
-				<Elements stripe={stripePromise} options={options}>
-				<CheckoutForm />
-			  </Elements>
+				<Link to={`booking`}>Try this</Link>
             )
             : (
             <Link   aria-current="page" to="/login">Login to Book</Link>
-            )} */}
+            )}
 
 
 		</FilmTimesContainer>
