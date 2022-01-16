@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { CarouselButton, CarouselCell, CarouselContainer, CarouselInner, CarouselLoader, SwiperX } from './CarouselElements';
+import { CarouselButton, CarouselCell, CarouselContainer, CarouselImg, CarouselInner, CarouselLoader, SwiperX } from './CarouselElements';
 import axios from 'axios';
 import { BsFillArrowLeftSquareFill, BsArrowRightSquareFill  } from "react-icons/bs";
 import { AuthContext } from '../../utils/stateContext';
 import Loading from '../Loading';
+
 
 const baseURL = "http://localhost:5000/api/v1/films"
 const herokuURL = `https://wesandersonfilmfestival.herokuapp.com/api/v1/films`
@@ -37,10 +38,11 @@ const Carousel = () => {
   <CarouselInner className="carousel-inner">
   {films.map((film) => {
             const {id, imageCover, name} = film;
+            console.log(imageCover)
             // more stuff coming up
             return <CarouselCell key={id} className={films[0] === film ? "carousel-item active" : "carousel-item"} >
-                <img src={`${herokuURL}/${id}/${imageCover}`} className="d-block w-100" alt={name}/>
                 <CarouselButton to={`films/${film.id}`} className="btn">Times and Tickets</CarouselButton>
+                <CarouselImg src={`/img/films/${imageCover}`} className="d-block w-100" alt={name}/>
             </CarouselCell>
             })}
   </CarouselInner>
@@ -52,6 +54,7 @@ const Carousel = () => {
     <span className="carousel-control-next-icon" aria-hidden="true"></span>
     <span className="visually-hidden">Next</span>
   </button>
+  
 </CarouselContainer>
         </>
     )

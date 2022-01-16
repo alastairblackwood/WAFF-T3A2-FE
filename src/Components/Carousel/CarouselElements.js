@@ -5,7 +5,6 @@ export const CarouselLoader = styled.div`
     background-color: ${props => props.theme.waffBlue};
     display: flex;
     justify-context: center;
-    
 `
 export const CarouselContainer = styled.div `
 margin: 0 auto;
@@ -27,14 +26,8 @@ export const CarouselInner = styled.div`
     
 `
 export const CarouselCell = styled.div`
-background: #517AB9;
+background: #242d45;
 height: 200px;
-
-
-/* @media only screen and (min-width: 600px) {
-    height: 400px;
-} */
-
 
 `
 export const CarouselButton = styled(Link)`
@@ -50,5 +43,12 @@ export const CarouselButton = styled(Link)`
     &:active {
         transform: scale(0.98);
     }
+    position: absolute;
+    top: 40%;
+    right: 150px;  
 `
 
+export const CarouselImg = styled.img`
+    height: 100%;
+    object-fit: contain;
+`

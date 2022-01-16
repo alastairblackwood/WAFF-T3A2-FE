@@ -1,6 +1,6 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { useParams } from "react-router-dom";
-import { FilmBody, FilmPageContainer, FilmContainer, FilmImageContainer, FilmH1, FilmSmallText, FilmTimesContainer } from './FilmElements';
+import { FilmBody, FilmPageContainer, FilmContainer, FilmImageContainer, FilmH1, FilmSmallText, FilmTimesContainer, FilmImg } from './FilmElements';
 import { AuthContext } from '../../utils/stateContext';
 import axios from 'axios';
 import Loading from '../Loading';
@@ -41,7 +41,7 @@ const Film = () => {
 			<div className=''>
 				<FilmContainer className='row'>
 					<FilmImageContainer className='col-md-3'>
-						<img src={`${herokuURL}/${film.imageCover}`}/>
+						<FilmImg src={`/img/films/${film.imageCover}`}/>
 					</FilmImageContainer>
 					<div className='col-md-9'>
 						<FilmH1 className="text-uppercase">{film.name}</FilmH1>

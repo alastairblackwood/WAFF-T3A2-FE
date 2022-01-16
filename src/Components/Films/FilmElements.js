@@ -17,15 +17,19 @@ export const FilmContainer = styled.div`
     justify-content: center;
     
 `
-
+export const FilmImg = styled.img`
+height: 100%;
+width: 100%;
+object-fit: cover;
+`
 
 export const FilmImageContainer = styled.div`
 border: 3px solid #FFD80B;
 box-shadow: 0px 4px 5px 2px rgba(0, 0, 0, 0.25);
 border-radius: 4px;
 background-color: ${props => props.theme.waffBlue};
-height: 100%;
-min-height: 300px;
+height: 250px;
+min-height: 200px;
 width: 200px;
 display: flex;
 `
