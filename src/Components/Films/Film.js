@@ -26,6 +26,7 @@ const Film = () => {
 		.catch(err=> console.log(err));
 	},[]);
 
+		console.log(film)
 	
 	if(!film){
 		return null;

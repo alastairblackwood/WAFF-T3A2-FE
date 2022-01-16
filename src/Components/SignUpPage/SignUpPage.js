@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import ErrorMessage from '../ErrorSuccessMessages/ErrorMessage'
 import Loading from '../Loading'
 import FormInput from '../LogInPage/FormInput'
@@ -23,7 +23,7 @@ const SignUpPage = () => {
 
     const [message,setMessage] = useState(null);
     const [error, setError] = useState(false);
-    const [loading,setLoading] = useState(false)
+    const history = useNavigate();
 
     // form inputs
     const inputs = [
@@ -78,7 +78,7 @@ const SignUpPage = () => {
                     },
                 };
                 
-                setLoading(true);
+                auth.loading();
                 
                 // post the request on pressing submit, posting the input values
                 const { data } = await axios.post(
@@ -90,16 +90,16 @@ const SignUpPage = () => {
             config
                 );
                 // turn off loader
-                setLoading(false);
+                auth.notloading();
                 // set global state to logged in
-                auth.logIn();
+                auth.login();
                 //set userInfo inside localStorage
                 localStorage.setItem("userInfo", JSON.stringify(data));
-
+                history("/")
                 
             } catch (error){
               setError(error.response.data.message);
-              setLoading(false);
+              auth.notloading();
             }
         };
         
@@ -114,7 +114,7 @@ const SignUpPage = () => {
             <h2>Sign Up</h2>
             {error && <ErrorMessage>{error}</ErrorMessage>}
             {message && <ErrorMessage>{message}</ErrorMessage>}
-            {loading && <Loading/>}
+            {auth.isLoading && <Loading/>}
             <Form onSubmit={handleSubmit}>
             {inputs.map((input) => (
                     <FormInput 
