@@ -7,6 +7,7 @@ import Film from './Film'
 import {Route, Routes, Outlet} from "react-router-dom"
 
 const baseURL = "http://localhost:5000/api/v1/films"
+const herokuURL = `https://wesandersonfilmfestival.herokuapp.com/api/v1/films`
 
 const Films = () => {
 
@@ -19,7 +20,7 @@ const Films = () => {
 	// useEffect to get film data
 	useEffect(async () => {
 		auth.loading()
-        axios.get(baseURL).then((response) => {
+        axios.get(herokuURL).then((response) => {
             // const filmslist = response.data.data.data
             setFilms(response.data.data.data);
 			setFilmTime(response.data.data.data[0].showtime);

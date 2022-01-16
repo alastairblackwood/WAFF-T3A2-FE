@@ -6,6 +6,7 @@ import { AuthContext } from '../../utils/stateContext';
 import Loading from '../Loading';
 
 const baseURL = "http://localhost:5000/api/v1/films"
+const herokuURL = `https://wesandersonfilmfestival.herokuapp.com/api/v1/films`
 
 
 const Carousel = () => {
@@ -17,7 +18,7 @@ const Carousel = () => {
 
     useEffect(() => {
         auth.loading()
-        axios.get(baseURL).then((response) => {
+        axios.get(herokuURL).then((response) => {
             // const filmslist = response.data.data.data
             setFilms(response.data.data.data);
             auth.notloading()
@@ -38,7 +39,7 @@ const Carousel = () => {
             const {id, imageCover, name} = film;
             // more stuff coming up
             return <CarouselCell key={id} className={films[0] === film ? "carousel-item active" : "carousel-item"} >
-                <img src={`${baseURL}/${id}/${imageCover}`} className="d-block w-100" alt={name}/>
+                <img src={`${herokuURL}/${id}/${imageCover}`} className="d-block w-100" alt={name}/>
                 <CarouselButton to={`films/${film.id}`} className="btn">Times and Tickets</CarouselButton>
             </CarouselCell>
             })}

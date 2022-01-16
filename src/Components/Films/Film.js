@@ -10,6 +10,7 @@ const Film = () => {
 
 	let params = useParams();
 	const baseURL = `http://localhost:5000/api/v1/films/${params.id}`
+	const herokuURL = `https://wesandersonfilmfestival.herokuapp.com/api/v1/films/${params.id}`
 	// create useContext instance from stateContext.js AuthContext methods
 	const auth = useContext(AuthContext)
 	// useState initialising
@@ -19,7 +20,7 @@ const Film = () => {
 	// useEffect to get film data
 	useEffect(async () => {
 		auth.loading()
-		axios.get(baseURL).then((response) => {
+		axios.get(herokuURL).then((response) => {
 			setFilm(response.data.data.data);
 			auth.notloading()
 		}) 			
@@ -40,7 +41,7 @@ const Film = () => {
 			<div className=''>
 				<FilmContainer className='row'>
 					<FilmImageContainer className='col-md-3'>
-						<img src={`${baseURL}/${film.imageCover}`}/>
+						<img src={`${herokuURL}/${film.imageCover}`}/>
 					</FilmImageContainer>
 					<div className='col-md-9'>
 						<FilmH1 className="text-uppercase">{film.name}</FilmH1>
@@ -54,7 +55,10 @@ const Film = () => {
 			</div>
 
 		<FilmTimesContainer>
-			
+			{/* {auth.isLoggedIn ?
+			(<button></button>)
+		} */}
+			<button>Book Now</button>
 		</FilmTimesContainer>
 
 		</FilmPageContainer>

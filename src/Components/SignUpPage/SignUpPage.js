@@ -8,6 +8,7 @@ import { Form } from '../LogInPage/LogInPageElements'
 import { AuthContext } from '../../utils/stateContext';
 
 const baseURL = "http://localhost:5000/api/v1/users/signup"
+const herokuURL = `https://wesandersonfilmfestival.herokuapp.com/api/v1/users/signup`
 
 const SignUpPage = () => {
     
@@ -82,7 +83,7 @@ const SignUpPage = () => {
                 
                 // post the request on pressing submit, posting the input values
                 const { data } = await axios.post(
-                    baseURL,
+                    herokuURL,
                     {
                 // post using input values spread operator
                 ...values,
