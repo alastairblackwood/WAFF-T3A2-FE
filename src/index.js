@@ -1,15 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import * as bootstrap from "bootstrap";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import App2 from "./App2";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter } from "react-router-dom";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe(
+  "pk_test_51K9cfbA8kBf0PVXQPlrBv6KlvhGsUCNz3RGgUuRpCt7vfiQvZpwEdxyWtRdTeYIRBaM59XiYasr469Ta9ZhioNSw00yIWDTJAa"
+);
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <App2 />
+    <BrowserRouter>
+      <Elements stripe={stripePromise}>
+        <App />
+      </Elements>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
