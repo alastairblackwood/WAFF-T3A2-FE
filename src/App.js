@@ -4,11 +4,7 @@ import ListFilmList from "./Components/adminDashboard/ListFilm/ListFilmList";
 import Form from "./Components/adminDashboard/Form/Form";
 
 function App() {
-  return (
-    <>
-      <NarBar />
-    </>
-  );
+  return <></>;
 }
 
 export default App;

@@ -31,3 +31,13 @@
 //     console.log(err);
 //   }
 // });
+
+// app.get("/read", async (req, res) => {
+// filmModel.find({}, err, result) => {
+//  if (err) {
+//   res.send(err);
+//  }
+//
+//   res.send(result);
+//  }
+// });
