@@ -1,13 +1,22 @@
 import React, {useState, useContext, useEffect} from 'react'
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FilmBody, FilmPageContainer, FilmContainer, FilmImageContainer, FilmH1, FilmSmallText, FilmTimesContainer, FilmImg } from './FilmElements';
 import { AuthContext } from '../../utils/stateContext';
 import axios from 'axios';
 import Loading from '../Loading';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe('pk_test_51K9cfbA8kBf0PVXQPlrBv6KlvhGsUCNz3RGgUuRpCt7vfiQvZpwEdxyWtRdTeYIRBaM59XiYasr469Ta9ZhioNSw00yIWDTJAa');
 
 
 const Film = () => {
-
+	const options = {
+		// passing the client secret obtained from the server
+		clientSecret: '{{CLIENT_SECRET}}',
+	  };
 	let params = useParams();
 	const baseURL = `http://localhost:5000/api/v1/films/${params.id}`
 	const herokuURL = `https://wesandersonfilmfestival.herokuapp.com/api/v1/films/${params.id}`
@@ -55,10 +64,18 @@ const Film = () => {
 			</div>
 
 		<FilmTimesContainer>
-			{/* {auth.isLoggedIn ?
-			(<button></button>)
-		} */}
-			<button>Book Now</button>
+
+            {auth.isLoggedIn ? 
+            (
+				<Elements stripe={stripePromise} options={options}>
+				<CheckoutForm />
+			  </Elements>
+            )
+            : (
+            <Link   aria-current="page" to="/login">Login to Book</Link>
+            )}
+
+
 		</FilmTimesContainer>
 
 		</FilmPageContainer>

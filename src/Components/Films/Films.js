@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react'
-import { Card, CardButton, CardImage, FilmCardBody, FilmCardContainer, FilmsContainer, FilmsH1 } from './FilmCardsElements';
+import { Card, CardButton, CardImage, CardImageWrapper, FilmCardBody, FilmCardContainer, FilmsContainer, FilmsH1 } from './FilmCardsElements';
 import { AuthContext } from '../../utils/stateContext';
 import Loading from '../Loading';
 import Film from './Film'
@@ -43,7 +43,6 @@ const Films = () => {
 				<FilmsH1 className="text-uppercase">Films</FilmsH1>
 				{/* when data is loading show spinner */}
 				{auth.isLoading && <Loading/>}
-				<img src={`http://localhost:5000/public/img/films/grandbudapesthotel.jpeg`}></img>
 							{films.map((film, index) => {
 								const {id, name, summary, startDates, imageCover} = film
 								const test2 = film.startDates.map((inner) => {
@@ -52,9 +51,9 @@ const Films = () => {
 								return (
 								<Card key={index} className='card mb-3'>
 									<div className='row g-0'>
-										<CardImage key={imageCover} className='col-md-4'>
-										{imageCover}	
-										</CardImage>
+										<CardImageWrapper key={imageCover} className='col-md-4'>
+											<CardImage src={`/img/films/${imageCover}`}/>	
+										</CardImageWrapper>
 										<div className='col-md-8'>
 											<div className="card-body" key={index}>
 												<FilmsH1 className="text-uppercase" key={name}>{name}</FilmsH1>

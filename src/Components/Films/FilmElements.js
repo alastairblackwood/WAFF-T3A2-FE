@@ -54,6 +54,8 @@ export const FilmTimesContainer = styled.div`
     display: flex;
     flex-flow: column wrap;
     background-color: white;
+    justify-content: center;
+    text-align: center;
     height: 100%;
     min-height: 100px;
     width: 100%;

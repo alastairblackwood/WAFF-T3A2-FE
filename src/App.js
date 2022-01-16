@@ -14,9 +14,11 @@ import { theme } from './Components/SharedStyles/styledFonts';
 import Schedule from './Components/Schedule/Schedule';
 import Nothing from './Components/Nothing/Nothing';
 import FilmLayout from './Components/Films/FilmLayout';
+import BookingSuccess from './Components/Bookings/BookingSuccess';
 
 const App = () => {
   
+
   //set up useState and callback functions for statecontext
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setAdmin] = useState(false);
@@ -45,24 +47,24 @@ const App = () => {
   
 
   return (
-    <>
+    < >
     <AuthContext.Provider value={{isLoggedIn: isLoggedIn, login: login, logout: logout, isAdmin: isAdmin, adminRole: adminRole, isLoading: isLoading, loading: loading, notloading: notloading }}>
       <ThemeProvider theme={theme}>
-        <Routes>
+        <Routes >
           {/* Layout parent to display children in Outlet */}
           <Route path='/' element={<Layout/>}>
             <Route index element={<HomePage/>} exact /> 
             <Route path="/films" elmement={<FilmLayout/>}> 
               <Route index element={<Films  /> } exact />
-              <Route path=':id' element={<Film />} exact/>
+              <Route path=':id' element={<Film />} exact />
               {/* </Route> */}
             </Route> 
             <Route path='/about' element={<About/>} exact  />
             <Route path='/schedule' element={<Schedule/>} exact  />
             <Route path='/login' element={<LogIn/>} exact  />
             <Route path='/signup' element={<SignUpPage/>} exact />
-            <Route path="*" element={<Nothing/>}
-    />
+            <Route path='/success' element={<BookingSuccess/>} exact />
+            <Route path="*" element={<Nothing/>}/>
           </Route>
         </Routes>
       </ThemeProvider>
