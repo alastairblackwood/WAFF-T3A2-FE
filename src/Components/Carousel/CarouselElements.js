@@ -22,19 +22,20 @@ justify-content: center;
 export const CarouselInner = styled.div`
     /* display: flex; */
     width: 500px;
+    height: 300px;
 
     
 `
 export const CarouselCell = styled.div`
 background: #242d45;
-height: 200px;
+height: 300px;
 
 `
 export const CarouselButton = styled(Link)`
     background-color: ${props => props.theme.waffYellow};
     height: 40px;
     width: 200px;
-    border: none 1px solid;
+    border: none 2px solid;
     border-radius: 68px;
     /* z-index: 3; */
     &:hover {
@@ -44,11 +45,30 @@ export const CarouselButton = styled(Link)`
         transform: scale(0.98);
     }
     position: absolute;
-    top: 40%;
-    right: 150px;  
+    top: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
 `
 
 export const CarouselImg = styled.img`
     height: 100%;
     object-fit: contain;
 `
+
+export const CarouselTitle = styled.h3`
+    font-family: ${props=> props.theme.jostFont};
+    color: ${props=> props.theme.waffYellow};
+    /* text-align: center; */
+    font-weight: bold;
+    /* position: absolute; */
+    justify-content: center;
+    top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+`   

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { CarouselButton, CarouselCell, CarouselContainer, CarouselImg, CarouselInner, CarouselLoader, SwiperX } from './CarouselElements';
+import { CarouselButton, CarouselCell, CarouselContainer, CarouselImg, CarouselInner, CarouselLoader, CarouselTitle, SwiperX } from './CarouselElements';
 import axios from 'axios';
 import { BsFillArrowLeftSquareFill, BsArrowRightSquareFill  } from "react-icons/bs";
 import { AuthContext } from '../../utils/stateContext';
@@ -41,6 +41,7 @@ const Carousel = () => {
             console.log(imageCover)
             // more stuff coming up
             return <CarouselCell key={id} className={films[0] === film ? "carousel-item active" : "carousel-item"} >
+                <CarouselTitle>{name}</CarouselTitle>
                 <CarouselButton to={`films/${film.id}`} className="btn">Times and Tickets</CarouselButton>
                 <CarouselImg src={`/img/films/${imageCover}`} className="d-block w-100" alt={name}/>
             </CarouselCell>

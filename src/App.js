@@ -15,6 +15,8 @@ import Schedule from './Components/Schedule/Schedule';
 import Nothing from './Components/Nothing/Nothing';
 import FilmLayout from './Components/Films/FilmLayout';
 import BookingSuccess from './Components/Bookings/BookingSuccess';
+import BookingCancelled from './Components/Bookings/BookingCancelled';
+import BookingForm from './Components/Bookings/BookingForm'
 
 const App = () => {
   
@@ -63,7 +65,9 @@ const App = () => {
             <Route path='/schedule' element={<Schedule/>} exact  />
             <Route path='/login' element={<LogIn/>} exact  />
             <Route path='/signup' element={<SignUpPage/>} exact />
+            <Route path='/booking' element={<BookingForm/>} exact />
             <Route path='/success' element={<BookingSuccess/>} exact />
+            <Route path='/cancelled' element={<BookingCancelled/>} exact />
             <Route path="*" element={<Nothing/>}/>
           </Route>
         </Routes>

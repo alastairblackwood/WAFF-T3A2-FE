@@ -53,20 +53,21 @@ const Footer = () => {
                                 <FooterSpan className='text-uppercase'> Follow for more</FooterSpan>
                                 </div>     
                                 <FooterIcons>  
-                                    <FooterIconLink to="#">
+                                    <FooterIconLink href="https://github.com/wpham1">
                                     <ImInstagram/>
                                     </FooterIconLink>
-                                    <FooterIconLink to="#">
+                                    <FooterIconLink href="https://github.com/alastairblackwood">
                                     <ImYoutube/>
                                     </FooterIconLink>
-                                    <FooterIconLink to="#">
+                                    <FooterIconLink href="https://github.com/nataliack">
                                     <ImTwitter/>
                                     </FooterIconLink>
-                                    <FooterIconLink to="#">
+                                    <FooterIconLink href="#">
                                     <ImFacebook2/>
                                     </FooterIconLink>
 
                                 </FooterIcons> 
+                    <span style={{color:"#eac70c"}}>Copyright WAFF, Motion Picture Cinema: Patterns by Hero Patterns</span>
                         </FooterIconWrapper>
                     </FooterTextWrapper>
             </FooterYellow>

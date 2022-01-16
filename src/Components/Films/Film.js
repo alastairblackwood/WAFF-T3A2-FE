@@ -4,12 +4,7 @@ import { FilmBody, FilmPageContainer, FilmContainer, FilmImageContainer, FilmH1,
 import { AuthContext } from '../../utils/stateContext';
 import axios from 'axios';
 import Loading from '../Loading';
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
-
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-const stripePromise = loadStripe('pk_test_51K9cfbA8kBf0PVXQPlrBv6KlvhGsUCNz3RGgUuRpCt7vfiQvZpwEdxyWtRdTeYIRBaM59XiYasr469Ta9ZhioNSw00yIWDTJAa');
+import CheckoutForm from '../Bookings/CheckoutForm'
 
 
 const Film = () => {
@@ -65,7 +60,7 @@ const Film = () => {
 
 		<FilmTimesContainer>
 
-            {auth.isLoggedIn ? 
+            {/* {auth.isLoggedIn ? 
             (
 				<Elements stripe={stripePromise} options={options}>
 				<CheckoutForm />
@@ -73,7 +68,7 @@ const Film = () => {
             )
             : (
             <Link   aria-current="page" to="/login">Login to Book</Link>
-            )}
+            )} */}
 
 
 		</FilmTimesContainer>

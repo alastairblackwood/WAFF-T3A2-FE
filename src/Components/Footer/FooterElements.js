@@ -78,7 +78,7 @@ export const FooterIcons = styled.div`
     gap: 20px;
 `
 
-export const FooterIconLink = styled(Link)`
+export const FooterIconLink = styled.a`
     color: ${props => props.theme.waffBlue};
     font-size: 20px;
 
