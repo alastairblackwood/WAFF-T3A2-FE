@@ -1,10 +1,10 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { useParams } from "react-router-dom";
-import { FilmContainer } from './FilmElements';
+import { FilmBody, FilmPageContainer, FilmContainer, FilmImageContainer, FilmH1, FilmSmallText, FilmTimesContainer } from './FilmElements';
 import { AuthContext } from '../../utils/stateContext';
 import axios from 'axios';
+import Loading from '../Loading';
 
-// const baseURL = "http://localhost:5000/api/v1/films"
 
 const Film = () => {
 
@@ -31,31 +31,32 @@ const Film = () => {
 		return null;
     }
 
-	console.log(film)
-	// console.log(film.get(images))
-	
 
 	return (
 		
-		<FilmContainer>
-		film
-		<h1>Title: {params.id}</h1>	
-		<h1>name:{params.name}</h1>
+		<FilmPageContainer>
+			{auth.isLoading && <Loading/>}
 			<div className=''>
-				<div className='row'>
-					<div className='col-md-3'>
-						imageCover
-					</div>
+				<FilmContainer className='row'>
+					<FilmImageContainer className='col-md-3'>
+						<img src={`${baseURL}/${film.imageCover}`}/>
+					</FilmImageContainer>
 					<div className='col-md-9'>
-						<h1>title</h1>
-						<p>release date</p>
-						<p>summary</p>
-			
+						<FilmH1 className="text-uppercase">{film.name}</FilmH1>
+						<div className='d-flex gap-3'>
+							<FilmSmallText >Released in: {film.year}</FilmSmallText>
+							<FilmSmallText>Runtime: {film.duration} hours</FilmSmallText>
+						</div>
+						<FilmBody>{film.description}</FilmBody>
 					</div>
-				</div>
+				</FilmContainer>
 			</div>
 
-		</FilmContainer>
+		<FilmTimesContainer>
+			
+		</FilmTimesContainer>
+
+		</FilmPageContainer>
 	)
 }
 

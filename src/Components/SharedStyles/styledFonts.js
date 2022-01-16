@@ -8,6 +8,7 @@ export const theme = {
     waffYellow: "#FFD80B",
     bitterFont: `"Bitter", serif`,
     jostFont: `"Jost", sans-serif`,
+    nunitoFont: `"Nunito", sans-serif`,
 
 }
 

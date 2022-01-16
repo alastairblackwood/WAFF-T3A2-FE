@@ -53,3 +53,8 @@ export const CardButton = styled(Link)`
         transform: scale(0.98);
     }
 `
+
+export const FilmCardBody = styled.div`
+    font-family: ${props => props.theme.nunitoFont};
+
+`

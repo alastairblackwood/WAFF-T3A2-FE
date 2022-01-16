@@ -14,7 +14,7 @@ const Navbar = () => {
     localStorage.removeItem("userInfo");
     // sets isUserLoggedIn to false
     auth.logout();
-    alert("logged out successfully")
+    alert("You've logged out successfully!")
   }
  
     return (

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react'
-import { Card, CardButton, CardImage, FilmCardContainer, FilmsContainer, FilmsH1 } from './FilmCardsElements';
+import { Card, CardButton, CardImage, FilmCardBody, FilmCardContainer, FilmsContainer, FilmsH1 } from './FilmCardsElements';
 import { AuthContext } from '../../utils/stateContext';
 import Loading from '../Loading';
 import Film from './Film'
@@ -57,11 +57,13 @@ const Films = () => {
 										<div className='col-md-8'>
 											<div className="card-body" key={index}>
 												<FilmsH1 className="text-uppercase" key={name}>{name}</FilmsH1>
+												<FilmCardBody>
 												<p key={summary}>{summary}</p>
 												<h5 style={{color: "#FFD80B", fontWeight: "bold"}}>Film Dates</h5>
 												<ul key={startDates} style={{listStyleType:"circle"}}>
 													{test2}
 												</ul>
+												</FilmCardBody>
 												<CardButton to={`${film.id}`} key={id} className="text-uppercase">See more</CardButton>
 											</div>	
 										</div>

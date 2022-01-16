@@ -1,6 +1,7 @@
 // import React from 'react'
-import React, { useEffect} from 'react'
+import React, { useContext} from 'react'
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../utils/stateContext';
 import About from '../About/About';
 import Carousel from '../Carousel/Carousel';
 import Schedule from '../Schedule/Schedule';
@@ -10,11 +11,12 @@ import Schedule from '../Schedule/Schedule';
 
 const HomePage = () => {
 
-    
+    const auth = useContext(AuthContext)
+
  
     return (
         <div>
-    <Carousel/>
+    <Carousel />
     <About/>
     <Schedule/>
     {/* <a href="/login">
