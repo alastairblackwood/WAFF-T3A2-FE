@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-// import Loading from "../Loading";
 
 const Form = () => {
   const [name, setName] = useState("");
@@ -14,8 +13,6 @@ const Form = () => {
   const [duration, setDuration] = useState(0);
   const [releaseDate, setReleaseDate] = useState(0);
   const [showDate, setShowDate] = useState(0);
-
-  // const [loading, setLoading] = useState(false);
 
   const [newUpdate, setNewUpdate] = useState("");
 
@@ -186,13 +183,6 @@ const Form = () => {
                 <P>Year published: {val.year}</P>
                 <P>Description: {val.description}</P>
 
-                {/* <Input
-                type="text"
-                placeholder="Update..."
-                onChange={(event) => {
-                  setNewUpdate(event.target.value);
-                }}
-              /> */}
                 <Button onClick={() => updateFilm(val._id)}>Update</Button>
                 <Button onClick={() => deleteFilm(val._id)}>Delete</Button>
               </FilmInfoBox>
