@@ -1,5 +1,7 @@
 import React from 'react'
-import { BookingContainer } from './BookingElements'
+import { BookingContainer, BookingSummaryBody, PlusMinus, PlusMinusContainer } from './BookingElements'
+import {AiFillMinusCircle} from "react-icons/ai"
+import {BsFillPlusSquareFill} from "react-icons/bs"
 
 const CartSummary = ({cartItems, onAdd, onRemove}) => {
 
@@ -13,18 +15,18 @@ const CartSummary = ({cartItems, onAdd, onRemove}) => {
             <div>You need to add tickets!</div>
             }
             {cartItems.map((item) => (
-                <div key={item.id} className='row'>
-                <div className='col-2'>{item.name}</div>
-                <div className='col-2'>
-                    <button onClick={()=>onAdd(item)}>+</button>
-                    <button 
+                <BookingSummaryBody key={item.id} className='row'>
+                <div className='col-2'><h4>{item.name}</h4></div>
+                <PlusMinusContainer className='col-2'>
+                    <PlusMinus 
                     disabled={cartItems.length === 0}
-                    onClick={()=>onRemove(item)}>-</button>
-                </div>
+                    onClick={()=>onRemove(item)}><AiFillMinusCircle/></PlusMinus>
+                    <PlusMinus onClick={()=>onAdd(item)}><BsFillPlusSquareFill/></PlusMinus>
+                </PlusMinusContainer>
                 <div className='col-2 text-right'>
-                    {item.qty} x {item.price}
+                    {item.qty} x {`$${item.price}`}
                 </div>
-                </div>
+                </BookingSummaryBody>
             ))}
             {/* if its greater than 0 then render */}
             {cartItems.length !== 0 && (
@@ -32,7 +34,7 @@ const CartSummary = ({cartItems, onAdd, onRemove}) => {
                 <hr/>
                 <div className='row'>
                     <div className='col-2'>Total Price</div>
-                    <div className='col-1 text-right'>{`${totalPrice}`}</div>
+                    <div className='col-1 text-right'>{`$${totalPrice}`}</div>
                 </div>
                 </>
             )

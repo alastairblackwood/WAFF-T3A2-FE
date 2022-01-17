@@ -1,18 +1,26 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { theme } from "../SharedStyles/styledFonts"
 
 export const BookingPage = styled.div`
     display: flex;
-    /* justify-content: center; */
     flex-flow: column;
     align-items: center;
     width: 100vw;
     max-width: 100%;
     padding: 40px;
-    height: 100vh;
+    height: 100%;
+    min-height: 70vh;
     background-color: #517ab9;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='Artboard-5' fill='%23ffffff' fill-opacity='0.08' fill-rule='nonzero'%3E%3Cpath d='M6 18h12V6H6v12zM4 4h16v16H4V4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-`
+    color: #1a3e7a;
+    font-family: ${props => props.theme.jostFont};
 
+`
+export const BookingSpan = styled.span`
+    color: ${props=> props.theme.waffYellow};
+    
+`
 export const BookingContainer = styled.div`
     height: auto;
     min-width: 300px;
@@ -26,4 +34,65 @@ export const BookingContainer = styled.div`
     @media only screen and (min-width: 600px) {
         min-width: 600px;
     }
+`
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    justify-context: space-around;
+`
+
+export const ButtonDirections = styled.button`
+    background-color: ${props => props.theme.waffYellow};
+    height: 30px;
+    width: auto;
+    min-width: 70px;
+    border-radius: 15px;
+    &:active {
+        transform: scale(0.9);
+    }
+`
+export const BookingSummaryBody = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+export const PlusMinusContainer = styled.div`
+display: flex;
+    justify-content: space-between;
+`
+export const PlusMinus = styled.button`
+    font-size: 24px;
+    color: ${props => props.theme.waffYellow};
+    &:active {
+        transform: scale(0.9);
+    }
+`
+
+export const CheckoutButtonDiv = styled.div`
+    display: flex;
+    flex-flow; column;
+    justify-content: center;
+`
+export const CheckoutButton = styled(Link)`
+    background-color: ${props => props.theme.waffYellow};
+    text-align: center;
+    height: 30px;
+    color: ${props => props.theme.waffBlue};
+    font-weight: bold;
+    width: 180px;
+    border-radius: 15px;
+    text-decoration: none;
+    &:hover {
+        background-color: #d7b500;
+    }
+    &:active {
+        transform: scale(0.98);
+    }
+`
+
+export const BookingH1 = styled.h1`
+    color: ${props => props.theme.waffYellow};
+
 `

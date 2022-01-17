@@ -5,6 +5,7 @@ import { AuthContext } from '../../utils/stateContext';
 import axios from 'axios';
 import Loading from '../Loading';
 import CheckoutForm from '../Bookings/CheckoutForm'
+import { NothingLink } from '../Nothing/NothingElements';
 
 
 const Film = () => {
@@ -63,10 +64,10 @@ const Film = () => {
 
             {auth.isLoggedIn ? 
             (
-				<Link to={`booking`}>Try this</Link>
+				<NothingLink to={`booking`}>Book now!</NothingLink>
             )
             : (
-            <Link   aria-current="page" to="/login">Login to Book</Link>
+            <NothingLink   aria-current="page" to="/login">Login to Book</NothingLink>
             )}
 
 

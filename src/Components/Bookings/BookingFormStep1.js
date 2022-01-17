@@ -1,6 +1,6 @@
 import React from 'react'
-import { BookingContainer } from './BookingElements'
-import {BsPlusSquareFill} from 'react-icons/bs'
+import { BookingContainer, PlusMinus } from './BookingElements'
+import {BsPlusCircleFill} from 'react-icons/bs'
 
 const BookingFormStep1 = ({cartItems, onRemove, tickets, onAdd}) => {
 
@@ -15,7 +15,7 @@ const BookingFormStep1 = ({cartItems, onRemove, tickets, onAdd}) => {
                     <div className='col'>{`$${ticket.price}.00`}</div>
                     <div className='col'>
                         <div>
-                            <button onClick={()=>onAdd(ticket)}><BsPlusSquareFill/></button>
+                            <PlusMinus style={{color: "#FFD80B"}} onClick={()=>onAdd(ticket)}><BsPlusCircleFill/></ PlusMinus>
                         </div>
                     </div>
                 </div>

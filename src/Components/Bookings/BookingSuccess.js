@@ -1,11 +1,13 @@
 import React from 'react'
-import { BookingPage } from './BookingElements'
+import { NothingLink } from '../Nothing/NothingElements'
+import { BookingH1, BookingPage } from './BookingElements'
 
 const BookingSuccess = () => {
     return (
         <BookingPage>
-            <h1>Congrats!</h1>
-            <h1>Booking successful!</h1>
+            <BookingH1>Congrats!</BookingH1>
+            <BookingH1>Booking successful!</BookingH1>
+            <NothingLink to="/">Go home</NothingLink>
         </BookingPage>
     )
 }

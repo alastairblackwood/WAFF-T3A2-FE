@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
-import { BookingPage } from './BookingElements'
+import { BookingPage, BookingSpan, ButtonContainer, ButtonDirections } from './BookingElements'
 import BookingFormStep1 from './BookingFormStep1'
 import BookingFormStep2 from './BookingFormStep2'
 import data from './data'
@@ -47,9 +47,21 @@ const BookingForm = () => {
     // depending on what page form, display specific component
     const PageDisplay = () => {
         if (page === 0){
-            return <BookingFormStep1 onRemove={onRemove} onAdd={onAdd} tickets={tickets} cartItems={cartItems}/>
+            return (<div>
+            <BookingFormStep1 onRemove={onRemove} onAdd={onAdd} tickets={tickets} cartItems={cartItems}/>
+            <br/>
+            <CartSummary onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}></CartSummary>
+            </div>
+            )
         } else {
-            return <BookingFormStep2/>
+            return (
+                <>
+            <CartSummary onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}></CartSummary>
+            <br/>
+            <BookingFormStep2/>
+            </>
+            
+            )
         }
     }
 
@@ -57,23 +69,22 @@ const BookingForm = () => {
         <>
         <BookingPage>
             <div>
-                <span>{SpanTitles[page]}</span>
+                <BookingSpan>{SpanTitles[page]}</BookingSpan>
             </div>
             <PageDisplay/>
             <br/>
-            <CartSummary onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}></CartSummary>
-            <div>
-            <button 
+            <ButtonContainer>
+            <ButtonDirections 
                 disabled={page == 0}
                 onClick={() => {setPage((currentPage) => currentPage - 1)}}>
                 Previous
-            </button>
-            <button 
+            </ButtonDirections>
+            <ButtonDirections 
                 disabled={page == SpanTitles.length-1}
                 onClick={() => {setPage((currentPage) => currentPage + 1)}}>
                 Next
-            </button>
-            </div>
+            </ButtonDirections>
+            </ButtonContainer>
         </BookingPage>
         </>
     )

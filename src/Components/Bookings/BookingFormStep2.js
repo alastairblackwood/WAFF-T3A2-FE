@@ -1,5 +1,5 @@
 import React from 'react'
-import { BookingContainer } from './BookingElements'
+import { BookingContainer, ButtonDirections, CheckoutButton, CheckoutButtonDiv } from './BookingElements'
 
 const BookingFormStep2 = () => {
    
@@ -7,7 +7,10 @@ const BookingFormStep2 = () => {
     return (
         <>
         <BookingContainer>
-            <h1>Step 2</h1>
+            <h1>Payment</h1>
+            <CheckoutButtonDiv>
+            <CheckoutButton to='/success'>Proceed to Checkout</CheckoutButton>
+            </CheckoutButtonDiv>
         </BookingContainer>
         </>
     )

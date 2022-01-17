@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import {useNavigate, Link} from "react-router-dom"
 import Loading from '../Loading';
 import FormInput from './FormInput';
-import { Form, LoginContainer } from './LogInPageElements';
+import { Form, LoginContainer, SubmitButton } from './LogInPageElements';
 import { useGlobalState } from '../../utils/stateContext';
 import ErrorMessage from '../ErrorSuccessMessages/ErrorMessage';
 import SuccessMessage from '../ErrorSuccessMessages/SuccessMessage';
@@ -117,7 +117,7 @@ const LogInPage = () => {
                     onChange={onChange} 
                     />
                 ))}
-                <button className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Submit</button>
+                <SubmitButton>Log In!</SubmitButton>
             </Form>
             <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
         </LoginContainer>

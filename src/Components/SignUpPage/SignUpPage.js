@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import ErrorMessage from '../ErrorSuccessMessages/ErrorMessage'
 import Loading from '../Loading'
 import FormInput from '../LogInPage/FormInput'
-import { Form } from '../LogInPage/LogInPageElements'
+import { Form, LoginContainer, SubmitButton } from '../LogInPage/LogInPageElements'
 import { AuthContext } from '../../utils/stateContext';
 
 const baseURL = "http://localhost:5000/api/v1/users/signup"
@@ -111,7 +111,7 @@ const SignUpPage = () => {
     }
     
     return (
-        <div className="Signupcontainer">
+        <LoginContainer className="Signupcontainer">
             <h2>Sign Up</h2>
             {error && <ErrorMessage>{error}</ErrorMessage>}
             {message && <ErrorMessage>{message}</ErrorMessage>}
@@ -125,10 +125,10 @@ const SignUpPage = () => {
                     onChange={onChange} 
                     />
                 ))}
-                <button className="button">Submit</button>
+                <SubmitButton className="button">Sign Up!</SubmitButton>
             </Form>
             <p>Already have an account? <Link to="/login">Log In</Link></p>
-        </div>
+        </LoginContainer>
     )
 }
 
