@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ScheduleContainer = styled.div`
-    max-height: 100vh;
+    max-height: auto;
     height: 100%;
     min-height: 400px;
     background: ${props => props.theme.waffBlue};
@@ -37,6 +37,7 @@ export const ScheduleTable = styled.div`
     background-color: white;
     font-family: ${props => props.theme.bitterFont};
     border: none;
+    height: 100%;
     border-radius: 20px;
     padding: 20px;
     display: grid;

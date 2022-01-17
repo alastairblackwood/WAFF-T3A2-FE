@@ -5,24 +5,29 @@ const Schedule = () => {
 
     const scheduleList = [
         {
-            title: "Fantastic Mr. Fox",
-            date: "01-17-22",
-            summary: "Lorem ipsum foxy boi"
+            title: "Rushmore",
+            date: "2021-04-25",
+            summary: "A teenager at Rushmore Academy falls for a much older teacher and befriends a middle-aged industrialist. "
         },
         {
             title: "Fantastic Mr. Fox",
-            date: "01-17-22",
-            summary: "Lorem ipsum foxy boi"
+            date: "2021-08-05",
+            summary: "An urbane fox cannot resist returning to his farm raiding ways and then must help his community survive the farmers' retaliation."
         },
         {
-            title: "Fantastic Mr. Fox",
+            title: "The Royal Tenenbaums",
             date: "01-17-22",
-            summary: "Lorem ipsum foxy boi"
+            summary: "The eccentric members of a dysfunctional family reluctantly gather under the same roof for various reasons."
         },
         {
-            title: "Fantastic Mr. Fox",
+            title: "The Darjeeling Limited",
             date: "01-17-22",
-            summary: "Lorem ipsum foxy boi"
+            summary: "A year after their father's funeral, three brothers travel across India by train in an attempt to bond with each other."
+        },
+        {
+            title: "Moonrise Kingdom",
+            date: "01-17-22",
+            summary: "A pair of young lovers flee their New England town, which causes a local search party to fan out to find them."
         },
       
 
@@ -35,22 +40,10 @@ const Schedule = () => {
             <ScheduleHeader2>Brisbane - 17th Jan 2022 - 30th Jan 2022</ScheduleHeader2>
             <ScheduleHeader3>Motion Picture Cinema</ScheduleHeader3>
             <ScheduleTable className='Table container'>
-            {/* {films.map((film) => {
-            const {id, images, name} = film;
-            console.log(films[0])
-            // more stuff coming up
-            return <CarouselCell key={id} className={films[0] === film ? "carousel-item active" : "carousel-item"} >
-                <img src={images[0]} className="d-block w-100" alt={name}/>
-                <CarouselButton>Book now</CarouselButton>
-                <CarouselButton>Show tickets and times</CarouselButton>
-            </CarouselCell>
-            })} */}
             <div className='row row-cols-3'>
                 <ScheduleSpan>Title</ScheduleSpan>
                 <ScheduleSpan>Date</ScheduleSpan>
                 <ScheduleSpan>Summary</ScheduleSpan>
-
-  
             {scheduleList.map((film) => {
                 const {title, date, summary} = film;
 
@@ -69,9 +62,7 @@ const Schedule = () => {
                 );
             })}
             </div>
-
             </ScheduleTable>
-
         </ScheduleContainer>
     )
 }
