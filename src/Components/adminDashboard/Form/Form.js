@@ -54,18 +54,24 @@ const Form = () => {
   }, []);
 
   const addToList = () => {
-    axios.post(herokuURL, {
-      name: name,
-      image: image,
-      language: language,
-      genre: genre,
-      director: director,
-      cast: cast,
-      description: description,
-      duration: duration,
-      releaseDate: releaseDate,
-      showDate: showDate,
-    });
+    window.alert("Film created - please refresh the page :)");
+    axios.post(
+      herokuURL,
+      {
+        name: name,
+        image: image,
+        language: language,
+        genre: genre,
+        director: director,
+        cast: cast,
+        description: description,
+        duration: duration,
+        releaseDate: releaseDate,
+        showDate: showDate,
+      },
+
+      config
+    );
   };
 
   const updateFilm = (id) => {
