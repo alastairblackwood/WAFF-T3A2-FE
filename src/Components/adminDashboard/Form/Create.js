@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Checkbox,
-  Form,
-  Input,
-  Radio,
-  Select,
-  TextArea,
-} from "semantic-ui-react";
+// import {
+//   Button,
+//   Checkbox,
+//   Form,
+//   Input,
+//   Radio,
+//   Select,
+//   TextArea,
+// } from "semantic-ui-react";
 
 const options = [
   { key: "m", text: "Male", value: "male" },

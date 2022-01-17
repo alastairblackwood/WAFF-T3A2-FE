@@ -8,6 +8,7 @@ import HomePage from "./Components/HomePage/HomePage";
 import Films from "./Components/Films/Films";
 import Film from "./Components/Films/Film";
 import About from "./Components/About/About";
+import Dashboard from "./Components/adminDashboard/Dashboard/Dashboard";
 import LogIn from "./Components/LogInPage/LoginPage";
 import SignUpPage from "./Components/SignUpPage/SignUpPage";
 import { theme } from "./Components/SharedStyles/styledFonts";
@@ -71,6 +72,7 @@ const App = () => {
                 {/* </Route> */}
               </Route>
               <Route path="/about" element={<About />} exact />
+              <Route path="/dashboard" element={<Dashboard />} exact />
               <Route path="/schedule" element={<Schedule />} exact />
               <Route path="/login" element={<LogIn />} exact />
               <Route path="/signup" element={<SignUpPage />} exact />

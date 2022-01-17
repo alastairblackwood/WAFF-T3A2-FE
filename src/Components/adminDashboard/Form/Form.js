@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import Loading from "../Loading";
+// import Loading from "../Loading";
 
 const Form = () => {
   const [name, setName] = useState("");
@@ -38,22 +38,26 @@ const Form = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const baseURL = "http://localhost:5001/api/v1/films/";
+  const herokuURL = `https://wesandersonfilmfestival.herokuapp.com/api/v1/films/`;
+
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+  let config = {
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + userInfo.token,
+    },
+  };
+
   useEffect(() => {
-    axios.get("http://localhost:5001/api/v1/films/").then((response) => {
+    axios.get(herokuURL).then((response) => {
       setFilmList([...response.data.data.data]);
     });
   }, []);
 
-  console.log("response.data");
-  axios.get("http://localhost:5001/api/v1/films/").then((response) => {
-    console.log(response.data.data.data);
-  });
-  console.log("filmList", filmList);
-
-  // setLoading(true);
-
   const addToList = () => {
-    axios.post("http://localhost:5001/api/v1/films", {
+    axios.post(herokuURL, {
       name: name,
       image: image,
       language: language,
@@ -68,14 +72,18 @@ const Form = () => {
   };
 
   const updateFilm = (id) => {
-    axios.put("http://localhost:5001/api/v1/films/:id", {
-      id: id,
-      newUpdate: newUpdate,
-    });
+    axios.put(
+      herokuURL + `${id}`,
+      {
+        id: id,
+        newUpdate: newUpdate,
+      },
+      config
+    );
   };
 
   const deleteFilm = (id) => {
-    axios.delete(`http://localhost:5001/api/v1/films/:id/${id}`);
+    axios.delete(herokuURL + `${id}`, config);
   };
 
   return (
@@ -191,8 +199,6 @@ const Form = () => {
             </div>
           );
         })}
-        {/* <Loading /> */}
-        {/* {loading && <Loading />}{" "} */}
       </FilmListBox>
     </FormBox>
   );
@@ -201,7 +207,7 @@ const Form = () => {
 export default Form;
 
 const Title = styled.h1`
-  padding: 100px;
+  padding: 80px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -213,6 +219,8 @@ const Text = styled.input`
   width: 200px;
   height: 30px;
   font-size: 20px;
+  border: 1px solid #000000;
+  border-radius: 83px;
 `;
 const Number = styled.input`
   text-align: center;
@@ -221,20 +229,23 @@ const Number = styled.input`
   width: 200px;
   height: 30px;
   font-size: 20px;
+  border: 1px solid #000000;
+  border-radius: 83px;
 `;
 const Button = styled.button`
   font-size: 0.8rem;
-  background: #f774c5;
+  background: #ead04b;
   border: none;
   padding: 0.8rem 1.1rem;
   color: #fff;
   border-radius: 1rem;
-  box-shadow: 0px 13px 24px -7px #ecb6d7;
+  box-shadow: 0px 13px 24px -7px #ead04b;
   transition: all 0.3s ease-in-out;
   margin-left: 0.5rem;
+  margin-top: 1.3rem;
   cursor: pointer;
   &:hover {
-    box-shadow: 0px 17px 16px -11px #ecb6d7;
+    box-shadow: 0px 17px 16px -11px #ead04b;
     transform: translateY(-5px);
   }
   @media (max-width: 670px) {
@@ -254,6 +265,7 @@ const FormList = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const FormBox = styled.div`
@@ -263,10 +275,11 @@ const FormBox = styled.div`
   left: 72px;
   top: 140px;
 
-  background: #555555;
+  background: #35589a;
   mix-blend-mode: soft-light;
   border-radius: 60px;
   box-shadow: 9px 9px 4px rgba(0, 0, 0, 0.25);
+  position: relative;
 `;
 
 const H1 = styled.h1`
@@ -279,23 +292,24 @@ const H1 = styled.h1`
 const P = styled.p``;
 
 const FilmInfoBox = styled.div`
-  background: #555555;
+  background: #35589a;
   mix-blend-mode: soft-light;
   box-shadow: 9px 9px 4px rgba(0, 0, 0, 0.25);
   border-radius: 60px;
   padding: 25px;
   margin-top: 40px;
+  position: relative;
 `;
 
 const FilmListBox = styled.div`
   position: absolute;
   width: 500px;
-  height: 100px;
   left: 400px;
   top: 10px;
 
-  background: #555555;
   mix-blend-mode: soft-light;
   box-shadow: 9px 9px 4px rgba(0, 0, 0, 0.25);
   border-radius: 60px;
+  overflow-y: scroll;
+  height: 950px;
 `;

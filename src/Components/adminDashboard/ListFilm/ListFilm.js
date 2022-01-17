@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import ListFilmForm from "./ListFilmForm";
-import ListFilmList from "./ListFilmList";
+// import ListFilmForm from "./ListFilmForm";
+// import ListFilmList from "./ListFilmList";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
 
